@@ -164,12 +164,15 @@ body {
 /* Sección de Presentación */
 .pizza-aside {
     display: flex;
-    justify-content: center;
+    max-width: 100%;
     align-items: center;
     background-color: #FFF; 
     margin-top: 20px;
     padding: 40px 0; /* Espacio adicional para la sección */
-  
+}
+.pizza-aside video{
+    width: 100%;
+    border-bottom-left-radius: 50%;
 }
 .section-title{
     font-size: 2.5em;
@@ -179,31 +182,11 @@ body {
     letter-spacing: 1.5px; 
 }
 
-.pizza-aside img {
-    max-width: 30%; /* Imagen grande para captar la atención */
-    height: auto;
-    border-radius: 10px; /* Bordes redondeados para la imagen */
-    animation: float 3s ease-in-out infinite;
-}
 
-.pizza-aside img:hover {
-    transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
-}
 
 .aside-content {
     max-width: 40%;
     padding-left: 20px;
-}
-@keyframes float {
-    0% {
-        transform: translatey(0px);
-    }
-    50% {
-        transform: translatey(-20px);
-    }
-    100% {
-        transform: translatey(0px);
-    }
 }
 
 /* Animación fadeIn */
@@ -244,7 +227,34 @@ body {
     background-color: #CC5220; /* Oscurecer el botón al pasar el ratón */
 }
 
+@media (max-width: 768px) {
+    .pizza-aside {
+        flex-direction: column;
+        text-align: center;
+    }
 
+    .aside-content {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .pizza-aside video {
+        max-width: 100%;
+    }
+
+    .text-title-aside {
+        font-size: 1.5em;
+    }
+
+    .text-product {
+        font-size: 1em;
+    }
+}
+
+.pizza-aside video {
+    max-width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 
 .div-product {
