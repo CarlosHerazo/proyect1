@@ -1,12 +1,9 @@
-/*
-#f6f4f3 = color de fondo
-#D1C8C1 = secundario
-##86654B = tercerario
-#31241E  =cuaternario
-##000000 = quinto
-*/
 
-
+/* Importa la tipografía Poppins de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+a{
+    text-decoration: none;
+}
 .header-content {
     display: flex;
     justify-content:  space-around;
@@ -134,8 +131,7 @@ nav ul li:last-child {
     }
 }
 
-/* Importa la tipografía Poppins de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 
 * {
     font-family: 'Poppins', sans-serif; /* Aplica la tipografía Poppins */
@@ -144,8 +140,6 @@ nav ul li:last-child {
 }
 
 body {
-    background-color: #f6f4f3; /* Color de fondo más suave */
-    color: #333; /* Color de texto más suave */
     margin: 0;
     padding: 0;
     line-height: 1.6; /* Espaciado de línea para mejorar la legibilidad */
@@ -175,6 +169,7 @@ body {
     background-color: #FFF; 
     margin-top: 20px;
     padding: 40px 0; /* Espacio adicional para la sección */
+  
 }
 .section-title{
     font-size: 2.5em;
@@ -188,7 +183,7 @@ body {
     max-width: 30%; /* Imagen grande para captar la atención */
     height: auto;
     border-radius: 10px; /* Bordes redondeados para la imagen */
-    transition: transform 0.3s ease; /* Transición para efecto de hover */
+    animation: float 3s ease-in-out infinite;
 }
 
 .pizza-aside img:hover {
@@ -199,10 +194,16 @@ body {
     max-width: 40%;
     padding-left: 20px;
 }
-
-.title-aside {
-    text-align: center;
-    animation: fadeIn 2s; /* Animación suave de aparición */
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-20px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
 }
 
 /* Animación fadeIn */
@@ -210,7 +211,10 @@ body {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
+.title-aside {
+    text-align: center;
+    animation: fadeIn 2s; /* Animación suave de aparición */
+}
 /* Encabezado y Texto */
 .text-title-aside {
     font-size: 2em;
@@ -292,8 +296,8 @@ body {
 
 
 .pizza-style {
-    background-color: #FFD700; /* Color base para el queso */
-    color: #31241E;
+    background-color: #d35400; /* Color base para el queso */
+    color: #ddd;
     padding: 20px;
     position: relative;
     overflow: hidden; /* Asegúrate de que todo quede dentro de los límites de la sección */

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <!--Fuentes-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,14 +36,15 @@
         <div class="nav-var">
             <nav>
                 <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Shop</li>
-                    <li>Contact</li>
+                    <a href=""><li>Inicio</li></a>
+                    <a href=""><li>productos</li></a>
+                    <a href=""><li>contactos</li></a>
+                    <a href=""><li><i class="fas fa-shopping-cart"></i></li></a>
+                    <a href=""><li><i class="fas fa-user"></i></li></a>
                 </ul>
                 <div class="hamburger-menu">
                     <!-- Icono del Menú Hamburguesa -->
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-bars"></i>
                 </div>
             </nav>
         </div>
@@ -53,14 +54,17 @@
 
     <!--comienzo del Main-->
     <Main class="main-content">
+        
         <div id="loader-wrapper">
             <div id="loader">
                 <img src="./img/logo.png" alt="Cargando..."> <!-- Cambia con tu imagen -->
             </div>
         </div>
         <!--Asaide-->
+        <br><br><br>
+        <br>
         <div class="pizza-aside">
-            <img src="../PROY1/img/seccion.png" alt="Pizza deliciosa">
+            <img src="./img/seccion.png" alt="Pizza deliciosa">
             <div class="aside-content">
                 <div class="title-aside">
                     <h2 class="text-title-aside">Los mejores precios en pizza</h2>
@@ -208,12 +212,10 @@
                 </div>
             </div>
             <div class="swiper-pagination"></div>
-        </div>
-       
-        
+        </div>      
         <!--Contactos-->
         <section class="contact-section pizza-style">
-            <h2 class="section-title">Contáctanos</h2>
+            <h2 class="">Contáctanos</h2>
             <form class="contact-form" action="tu_script_de_procesamiento.php" method="POST">
                 <input type="text" name="nombre" placeholder="Tu Nombre" required>
                 <input type="email" name="email" placeholder="Tu Email" required>
@@ -254,7 +256,7 @@
 </section>
         <footer class="site-footer">
             <p>© 2023 PizzaMania. Todos los derechos reservados.</p>
-            <p>Diseñado por [TuNombre o Empresa]</p>
+            <p>Diseñado por HERAZO DEVELOPER</p>
         </footer>
 
     </Main>
