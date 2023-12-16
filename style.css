@@ -1,0 +1,414 @@
+/*
+#f6f4f3 = color de fondo
+#D1C8C1 = secundario
+##86654B = tercerario
+#31241E  =cuaternario
+##000000 = quinto
+*/
+
+
+.header-content {
+    display: flex;
+    justify-content:  space-around;
+    background-color: #FFD700; 
+    border-bottom: 2px solid #DAA520; 
+    padding: 10px;
+    position: fixed;    
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    
+}
+
+.primary{
+    display: flex;
+    background-color: #FFF; 
+    justify-content: center;
+    align-items: center;
+}
+.header-contact{
+    margin: 2px;
+    display: flex;
+    background-color: #FFF;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+}
+
+.content-logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 600;
+    border-radius: 50%;
+}
+
+.content-logo img{
+    border-radius: 50%;
+}
+
+
+
+nav ul li {
+    font-size: 18px;
+    color: #8B0000; 
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease; 
+}
+
+nav ul li:hover {
+    color: #FF6347; 
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+.nav-var{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo del Logotipo */
+.content-logo {
+    font-size: 24px; /* Tamaño de la fuente del logotipo */
+    font-weight: bold; /* Fuente en negrita */
+    color: #333; /* Color del texto del logotipo */
+}
+
+.content-logo img.logo {
+    max-width: 50px; /* Ajustar tamaño del logotipo */
+    margin-right: 10px;
+}
+
+/* Estilo de la Barra de Navegación */
+.nav-var nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centrar elementos de navegación */
+    align-items: center;
+}
+
+.nav-var nav ul li {
+    margin: 0 10px;
+}
+
+/* Estilos para el Menú Hamburguesa */
+.hamburger-menu {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    /* Estilo para Pantallas Pequeñas */
+    .hamburger-menu {
+        display: block;
+        cursor: pointer;
+    }
+
+    /* Ocultar la barra de navegación normal en pantallas pequeñas */
+    .nav-var nav ul {
+        display: none;
+    }
+
+    /* Mostrar la barra de navegación cuando el menú hamburguesa está activo */
+    .nav-active .nav-var nav ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        padding: 10px;
+    }
+
+    .nav-active .nav-var nav ul li {
+        margin: 10px 0;
+    }
+}
+
+/* Importa la tipografía Poppins de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif; /* Aplica la tipografía Poppins */
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #f6f4f3; /* Color de fondo más suave */
+    color: #333; /* Color de texto más suave */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6; /* Espaciado de línea para mejorar la legibilidad */
+}
+
+.header-content {
+    background-color: #ffffff; /* Fondo blanco para un aspecto limpio */
+    color: #333; /* Color de texto oscuro para contraste */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil para el encabezado */
+    padding: 20px;
+}
+
+.nav-var nav ul li {
+    transition: color 0.3s ease; /* Suaviza la transición del color */
+}
+
+
+
+
+
+/* Ajustes para la primera sección */
+/* Sección de Presentación */
+.pizza-aside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF; 
+    margin-top: 20px;
+    padding: 40px 0; /* Espacio adicional para la sección */
+}
+.section-title{
+    font-size: 2.5em;
+    text-align: center; 
+    font-weight: 300; 
+    margin: 20px; 
+    letter-spacing: 1.5px; 
+}
+
+.pizza-aside img {
+    max-width: 30%; /* Imagen grande para captar la atención */
+    height: auto;
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+    transition: transform 0.3s ease; /* Transición para efecto de hover */
+}
+
+.pizza-aside img:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+}
+
+.aside-content {
+    max-width: 40%;
+    padding-left: 20px;
+}
+
+.title-aside {
+    text-align: center;
+    animation: fadeIn 2s; /* Animación suave de aparición */
+}
+
+/* Animación fadeIn */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Encabezado y Texto */
+.text-title-aside {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.text-product {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* Botón */
+.btn {
+    background-color: #FF6347; /* Color llamativo para el botón */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #CC5220; /* Oscurecer el botón al pasar el ratón */
+}
+
+
+
+
+.div-product {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+  
+.header-slaider img {
+    width: 100%;
+    height: auto;
+}
+
+
+  
+.body-slaider {
+    padding: 10px;
+    text-align: center;
+}
+  
+
+/*contactos*/
+.contact-section {
+    background-color: #f6f4f3;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-form {
+    display: grid;
+    gap: 10px;
+    justify-items: center;
+    margin-top: 20px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 80%; /* Ajusta el ancho según prefieras */
+    padding: 10px;
+    border: 1px solid #D1C8C1;
+    border-radius: 5px;
+}
+
+.contact-form textarea {
+    height: 100px; /* Ajusta la altura según prefieras */
+    resize: vertical; /* Permite al usuario ajustar la altura del textarea */
+}
+
+
+.pizza-style {
+    background-color: #FFD700; /* Color base para el queso */
+    color: #31241E;
+    padding: 20px;
+    position: relative;
+    overflow: hidden; /* Asegúrate de que todo quede dentro de los límites de la sección */
+    text-align: center;
+}
+
+.pizza-style::before, .pizza-style::after {
+    content: '';
+    position: absolute;
+    background-color: #fff; /* Mismo color de fondo para las gotas */
+    border-radius: 50%; /* Crea círculos */
+}
+
+.pizza-style::before {
+    width: 100px; /* Tamaño de la gota */
+    height: 100px; /* Tamaño de la gota */
+    bottom: 350px; /* Posición de la gota */
+    left: 10%; /* Ajusta según sea necesario */
+}
+
+.pizza-style::after {
+    width: 80px; /* Tamaño de la gota */
+    height: 80px; /* Tamaño de la gota */
+    bottom: -40px; /* Posición de la gota */
+    right: 15%; /* Ajusta según sea necesario */
+}
+
+/*Reseñas*/
+.testimonials-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #ffe5b4; /* Un color cálido que recuerda a la masa de pizza */
+    padding: 40px 20px;
+    text-align: center;
+    align-items: center;
+}
+
+.section-title {
+    color: #d35400; /* Color que recuerda a la salsa de tomate */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.testimonial-card {
+    background-color: #fff5e6; /* Un tono más claro para el contraste */
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px); /* Efecto al pasar el ratón */
+}
+
+.testimonial-img {
+    border-radius: 50%; /* Hace la imagen redonda */
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 3px solid #d35400; /* Borde que recuerda a la salsa de tomate */
+    margin-bottom: 15px;
+}
+
+.testimonial-stars .fas {
+    color: #ffcc00; /* Color dorado para las estrellas */
+}
+
+.testimonial-stars .far {
+    color: #ccc; /* Color para estrellas inactivas */
+}
+
+h3 {
+    color: #333;
+    font-style: italic;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #FFF; /* Fondo dorado, evocando queso */
+    color: #000;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 30px;
+    border-top: 2px solid #DAA520; 
+}
+
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff; /* Fondo blanco o el color que prefieras */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegúrate de que esté por encima de todo lo demás */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+#loader img {
+    width: 150px; /* Tamaño de la imagen de carga */
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+
+}
+
+
+
+
