@@ -424,5 +424,21 @@ h3 {
 }
 
 
+/*alerta*/
+.alerta {
+    position: fixed;
+    top: 25%;
+    left: 90%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    display: none;
+    z-index: 100;
+}
+
+
 
 
