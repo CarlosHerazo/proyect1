@@ -85,9 +85,6 @@ require '../controllers/ajaxCarrito.php';
                 </button>
 
             </div>
-
-            <!-- <button>PROCEDER A PAGAR <i class="fas fa-money-bill-wave"></i></button>
-            <button>ELEGIR MAS PRODUCTOS <i class="fas fa-shopping-cart"></i></button> -->
         </div>
 
     </main>
@@ -99,13 +96,9 @@ require '../controllers/ajaxCarrito.php';
 
 </html>
 
-
-
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="../js/swiper.js"></script>
 <script src="../js/slaider_js.js"></script>
 <script src="../js/cargando.js"></script>
-<script src="../js/alerta.js"></script>
+<script src="../js/actualizarCarrito.js"></script>
 </body>
 
 </html>

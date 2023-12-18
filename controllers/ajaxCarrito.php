@@ -4,12 +4,13 @@ session_start();
 
 if (isset($_POST['accion'], $_POST['indice'])) {
     $indice = $_POST['indice'];
-
     if ($_POST['accion'] == 'incrementar' && isset($_SESSION['carrito'][$indice])) {
         $_SESSION['carrito'][$indice]['cantidad']++;
+        $_SESSION['carrito'][$indice]['subtotal'] = $_SESSION['carrito'][$indice]['precio'] * $_SESSION['carrito'][$indice]['cantidad'];
     } elseif ($_POST['accion'] == 'decrementar' && isset($_SESSION['carrito'][$indice])) {
         if ($_SESSION['carrito'][$indice]['cantidad'] > 1) {
             $_SESSION['carrito'][$indice]['cantidad']--;
+            $_SESSION['carrito'][$indice]['subtotal'] = $_SESSION['carrito'][$indice]['precio'] * $_SESSION['carrito'][$indice]['cantidad'];
         }
     }
 
