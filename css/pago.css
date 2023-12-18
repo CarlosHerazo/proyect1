@@ -1,0 +1,63 @@
+/* Estilo general para la factura */
+.factura {
+    font-family: 'Arial', sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+ 
+}
+
+/* Encabezado de la factura */
+.factura-header {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.factura-header h2 {
+    margin: 0;
+    color: #333;
+}
+
+/* Detalles del cliente y la factura */
+.factura-info {
+    margin-bottom: 20px;
+}
+
+.info-cliente,
+.info-factura {
+    margin-bottom: 10px;
+}
+
+/* Estilo para la tabla de detalles de la factura */
+.factura-detalle {
+    
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.factura-detalle th,
+.factura-detalle td {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.factura-detalle th {
+    background-color: #f8f8f8;
+}
+
+/* Estilo para el total */
+.total-factura {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.total-factura h3 {
+    margin: 0;
+    color: #333;
+}
+

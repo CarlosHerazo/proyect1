@@ -25,6 +25,7 @@ $result = $conn->query($query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/product.css">
+    <link rel="stylesheet" href="../css/carrito.css">
     <!--Fuentes-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,50 +40,12 @@ $result = $conn->query($query);
 </head>
 
 <body>
-    <!-- <header class="header-content primary">
-        <div class="header-contact">
-            <p> CELL: +57 3135885420</p>
-            <p> Carrera #48 Cra 59-25</p>
-        </div>
-    </header> -->
     <!--comienzo del header-->
-    <header class="header-content ">
-        <div class="content-logo">
-            <img src="../img/logo.png" alt="PizzaMania Logo" class="logo"> <!-- Logo de PizzaMania -->
-            <p>Pizza<span>Mania</span></p>
-        </div>
-        <div class="nav-var">
-            <nav>
-                <ul>
-                    <a href="">
-                        <li>Inicio</li>
-                    </a>
-                    <a href="">
-                        <li>productos</li>
-                    </a>
-                    <a href="">
-                        <li>contactos</li>
-                    </a>
-                    <a href="">
-                        <li><i class="fas fa-shopping-cart"></i></li>
-                    </a>
-                    <a href="">
-                        <li><i class="fas fa-user"></i></li>
-                    </a>
-                </ul>
-                <div class="hamburger-menu">
-                    <!-- Icono del Menú Hamburguesa -->
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
-
+    <?php require '../globals/headers.php'; ?>
     <!--fin del header-->
 
     <!--comienzo del Main-->
     <Main class="main-content">
-
         <div id="loader-wrapper">
             <div id="loader">
                 <img src="../img/logo.png" alt="Cargando..."> <!-- Cambia con tu imagen -->
@@ -154,7 +117,7 @@ $result = $conn->query($query);
                                             <i class="fas fa-star"></i>
                                         </div>
                                         <div class="btn-Botones">
-                                            <button class="btn" onclick="mostrarAlerta()">Agregar</button>
+                                            <button class="btn"  data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
                                             <button class="btn">Ver detalles</button>
                                         </div>
                                     </div>
@@ -185,7 +148,7 @@ $result = $conn->query($query);
         $categoria = $_GET['categoria'];
         $query .= " AND categoria = '$categoria'";
     }
-    
+
     if (isset($_GET['precio']) && is_numeric($_GET['precio'])) {
         $precioMaximo = $_GET['precio'];
         $query .= " AND precio <= $precioMaximo";
@@ -217,7 +180,7 @@ $result = $conn->query($query);
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="btn-Botones">
-                                        <button class="btn" onclick="mostrarAlerta()">Agregar</button>
+                                        <button class="btn" data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
                                         <button class="btn">Ver detalles</button>
                                     </div>
                                 </div>
@@ -233,13 +196,13 @@ $result = $conn->query($query);
             </div>
         </div>
     <?php
- 
+
     } else {
         echo "Error en la consulta: " . $conn->error;
     }
     ?>
 
-<!--Tamaño Familiar-->
+    <!--Tamaño Familiar-->
     <h2 class="section-title">TAMAÑOS FAMILIAR</h2>
     <?php
     $query = "SELECT * FROM productos WHERE categoria = 'familiar'";
@@ -247,7 +210,7 @@ $result = $conn->query($query);
         $categoria = $_GET['categoria'];
         $query .= " AND categoria = '$categoria'";
     }
-    
+
     if (isset($_GET['precio']) && is_numeric($_GET['precio'])) {
         $precioMaximo = $_GET['precio'];
         $query .= " AND precio <= $precioMaximo";
@@ -279,7 +242,7 @@ $result = $conn->query($query);
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="btn-Botones">
-                                        <button class="btn" onclick="mostrarAlerta()">Agregar</button>
+                                        <button class="btn" data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
                                         <button class="btn">Ver detalles</button>
                                     </div>
                                 </div>
@@ -295,15 +258,15 @@ $result = $conn->query($query);
             </div>
         </div>
     <?php
- 
+
     } else {
         echo "Error en la consulta: " . $conn->error;
     }
     ?>
 
-    
-<!--Bebidas-->
-<h2 class="section-title">BEBIDAS</h2>
+
+    <!--Bebidas-->
+    <h2 class="section-title">BEBIDAS</h2>
     <?php
     $query = "SELECT * FROM productos WHERE categoria = 'gaseosas'";
     $result = $conn->query($query);
@@ -333,7 +296,7 @@ $result = $conn->query($query);
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="btn-Botones">
-                                        <button class="btn" onclick="mostrarAlerta()">Agregar</button>
+                                        <button class="btn"  data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
                                         <button class="btn">Ver detalles</button>
                                     </div>
                                 </div>
@@ -349,23 +312,24 @@ $result = $conn->query($query);
             </div>
         </div>
     <?php
- 
+
     } else {
         echo "Error en la consulta: " . $conn->error;
     }
     ?>
+    <br>
+<?php require '../globals/footers.php'; ?>
 </body>
 
 </html>
 
-<br>
 
-</Main>
+
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="../js/swiper.js"></script>
 <script src="../js/slaider_js.js"></script>
 <script src="../js/cargando.js"></script>
-<script src="../js/alerta.js"></script>
+<script src="../js/agregarCarrito.js"></script>
 </body>
 
 </html>
