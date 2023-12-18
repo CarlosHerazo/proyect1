@@ -33,27 +33,10 @@ class ConexionBD {
     }
 }
 
-// Lee las variables de entorno desde el archivo .env
-$envFile = 'variables.env';
-if (file_exists($envFile)) {
-    $envVariables = parse_ini_file($envFile);
-    foreach ($envVariables as $key => $value) {
-        putenv("$key=$value");
-    }
-}
-
-$dbHost = getenv('DB_HOST');
-$dbUser = getenv('DB_USER');
-$dbPass = getenv('DB_PASS');
-$dbName = getenv('DB_NAME');
-
 // Uso de la clase
-$conexion = new ConexionBD($dbHost, $dbUser, $dbPass , $dbName);
+$conexion = new ConexionBD("localhost", "root", "root", "pizzabd");
 $conn = $conexion->obtenerConexion();
 
 // Realiza tus operaciones con la base de datos aquí
-
-// Cierra la conexión al finalizar
-$conexion->cerrarConexion();
 
 

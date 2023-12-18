@@ -1,0 +1,66 @@
+.pizza-aside-separacion {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 80px;
+    background-image: url('./../img/product-seccion.png');
+
+}
+.text-title-aside{
+    color: #FFF;
+}
+.text-product{
+    color: #FFF;
+}
+.video {
+    flex: 1;
+    position: relative;
+    border-bottom-right-radius: 50%;
+}
+
+.video video {
+    width: 100%;
+    height: auto;
+}
+
+.Product-aside {
+    flex: 1;
+    position: relative;
+    padding: 20px;
+    border-end-end-radius: 50px;
+}
+
+/*filtro*/
+form {
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 50px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+select,
+input,
+button {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input {
+    transition: border-color 0.3s; 
+}
+
+input:focus {
+    border-color: #00f; /* Cambiamos el color del borde al hacer clic */
+}
+
+
+
