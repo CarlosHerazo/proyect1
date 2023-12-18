@@ -62,5 +62,11 @@ input:focus {
     border-color: #00f; /* Cambiamos el color del borde al hacer clic */
 }
 
+.alert-product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 
