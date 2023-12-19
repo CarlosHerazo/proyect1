@@ -46,10 +46,6 @@ require '../controllers/ajaxCarrito.php';
 
                     <?php if (!empty($_SESSION['carrito'])) : ?>
                         <?php
-                        $total = 0;
-                        foreach ($_SESSION['carrito'] as $producto) {
-                            $total += $producto['subtotal']; // Suma el subtotal de cada producto al total
-                        }
                         ?>
                         <?php foreach ($_SESSION['carrito'] as $indice => $producto) : ?>
                             <tr class="tr">
@@ -63,7 +59,7 @@ require '../controllers/ajaxCarrito.php';
                                 </td>
                                 <td><?php echo "$" . number_format($producto['precio']); ?></td>
                                 <td><?php echo "$" . number_format($producto['subtotal']); ?></td>
-                                <td><i class="fas fa-trash"></i></td>
+                                <td><i onclick="alert(<?php echo $indice; ?>)" class="fas fa-trash"></i></td>
                             </tr>
                         <?php endforeach; ?>
                         <tr>
@@ -76,7 +72,7 @@ require '../controllers/ajaxCarrito.php';
                         </tr>
                     <?php else : ?>
                         <tr>
-                            <td colspan="4">No hay productos en el carrito</td>
+                            <td colspan="5">No hay productos en el carrito</td>
                         </tr>
                     <?php endif; ?>
                 </table>
@@ -95,7 +91,8 @@ require '../controllers/ajaxCarrito.php';
 <?php require '../globals/footers.php'; ?>
 
 </html>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../js/alerta.js"></script>
 <script src="../js/slaider_js.js"></script>
 <script src="../js/cargando.js"></script>
 <script src="../js/actualizarCarrito.js"></script>

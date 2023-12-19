@@ -107,7 +107,7 @@ $result = $conn->query($query);
                                     </div>
                                     <div class="body-slaider">
                                         <h2><?php echo $row['nombre']; ?></h2>
-                                        <p class="Precio">$<?php echo $row['precio']; ?></p>
+                                        <p class="Precio">$<?php echo number_format( $row['precio'],2); ?></p>
                                         <p class="Valoracion">Valoración: <?php echo round($row['promedio_valoracion'], 2); ?></p>
                                         <div class="testimonial-stars">
                                             <i class="fas fa-star"></i> <!-- Estrella activa -->
@@ -170,7 +170,7 @@ $result = $conn->query($query);
                                 </div>
                                 <div class="body-slaider">
                                     <h2><?php echo $row['nombre']; ?></h2>
-                                    <p class="Precio">$<?php echo $row['precio']; ?></p>
+                                    <p class="Precio">$<?php echo  number_format( $row['precio'],2); ?></p>
                                     <p class="Valoracion">Valoración: <?php echo round($row['promedio_valoracion'], 2); ?></p>
                                     <div class="testimonial-stars">
                                         <i class="fas fa-star"></i> <!-- Estrella activa -->
@@ -232,7 +232,7 @@ $result = $conn->query($query);
                                 </div>
                                 <div class="body-slaider">
                                     <h2><?php echo $row['nombre']; ?></h2>
-                                    <p class="Precio">$<?php echo $row['precio']; ?></p>
+                                    <p class="Precio">$<?php echo number_format( $row['precio'], 2); ?></p>
                                     <p class="Valoracion">Valoración: <?php echo round($row['promedio_valoracion'], 2); ?></p>
                                     <div class="testimonial-stars">
                                         <i class="fas fa-star"></i> <!-- Estrella activa -->
@@ -286,7 +286,7 @@ $result = $conn->query($query);
                                 </div>
                                 <div class="body-slaider">
                                     <h2><?php echo $row['nombre']; ?></h2>
-                                    <p class="Precio">$<?php echo $row['precio']; ?></p>
+                                    <p class="Precio">$<?php echo  number_format( $row['precio'], 2); ?></p>
                                     <p class="Valoracion">Valoración: <?php echo round($row['promedio_valoracion'], 2); ?></p>
                                     <div class="testimonial-stars">
                                         <i class="fas fa-star"></i> <!-- Estrella activa -->
