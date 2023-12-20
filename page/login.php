@@ -10,25 +10,25 @@
     <div class="container">
         <!-- Panel de Inicio de Sesión -->
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="#" id="login-form">
                 <h1>Iniciar Sesión</h1>
-                <input type="email" placeholder="Correo Electrónico" />
-                <input type="password" placeholder="Contraseña" />
+                <input type="email" placeholder="Correo Electrónico" name="user"/>
+                <input type="password" placeholder="Contraseña" name="contra"/>
                 <a href="#">¿Olvidaste tu contraseña?</a>
-                <button>Iniciar Sesión</button>
+                <button type="submit"> Iniciar Sesión</button>
             </form>
         </div>
 
         <!-- Panel de Registro -->
-        <div class="form-container sign-up-container">
-            <form action="#">
+        <div class="form-container sign-up-container" id="registro-form">
+            <form action="" >
                 <h1>Crear Cuenta</h1>
-                <input type="text" placeholder="Nombre" />
-                <input type="email" placeholder="Correo Electrónico" />
-                <input type="password" placeholder="Contraseña" />
-                <input type="text" placeholder="Direccion" />
-                <input type="number" placeholder="Telefono" />
-                <button>Registrarse</button>
+                <input type="text" placeholder="Nombre" name="name"/>
+                <input type="email" placeholder="Correo Electrónico" name="email" />
+                <input type="password" placeholder="Contraseña"  name="pass"/>
+                <input type="text" placeholder="Direccion" name ="adress"/>
+                <input type="number" placeholder="Telefono" name ="phone"/>
+                <button name="btn-registrar" type="submit">Registrarse</button>
             </form>
         </div>
 
@@ -62,5 +62,6 @@
             container.classList.remove("right-panel-active");
         });
     </script>
+    <script src="../js/sign-up-sign-in.js"></script>
 </body>
 </html>

@@ -1,7 +1,14 @@
 <?php
 require_once './../model/conexion.php';
-$conexion = new ConexionBD("localhost", "root", "root", "pizzabd");
+// Crear una instancia de ConexionBD
+$conexion = new ConexionBD();
+
+// Obtener la conexión
 $conn = $conexion->obtenerConexion();
+
+// Cerrar la conexión cuando haya terminado
+$conexion->cerrarConexion();
+
 // Verifica si la conexión es exitosa
 $query = "SELECT * FROM productos WHERE destacados = 1";
 
@@ -89,16 +96,15 @@ $result = $conn->query($query);
 
         </form>
         <h2 class="section-title">Productos Destacados</h2>
-        <div class="alerta" id="miAlerta">¡Elemento agregado correctamente!</div>
         <div class="swiper mySwiper">
             <?php
             if ($result) {
             ?>
                 <div class="swiper-wrapper">
                     <?php
-                    if ($result->num_rows > 0) {
+                    if ($result-> rowCount() > 0) {
                         // Iterar sobre los resultados de la consulta
-                        while ($row = $result->fetch_assoc()) {
+                        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                             <div class="swiper-slide">
                                 <div class="div-product">
@@ -117,7 +123,7 @@ $result = $conn->query($query);
                                             <i class="fas fa-star"></i>
                                         </div>
                                         <div class="btn-Botones">
-                                            <button class="btn"  data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
+                                            <button class="btn" id="agregar-product" data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
                                             <button class="btn">Ver detalles</button>
                                         </div>
                                     </div>
@@ -132,10 +138,10 @@ $result = $conn->query($query);
                 </div>
                 <div class="swiper-pagination"></div>
         </div>
-    <?php    // Liberar los resultados
-                $result->free();
+    <?php    
+             
             } else {
-                echo "Error en la consulta: " . $conn->error;
+                echo "Error en la consulta: ";
             }
 
     ?>
@@ -159,9 +165,9 @@ $result = $conn->query($query);
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <?php
-                if ($result->num_rows > 0) {
+                if ($result-> rowCount() > 0) {
                     // Iterar sobre los resultados de la consulta
-                    while ($row = $result->fetch_assoc()) {
+                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                         <div class="swiper-slide">
                             <div class="div-product">
@@ -180,7 +186,7 @@ $result = $conn->query($query);
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="btn-Botones">
-                                        <button class="btn" data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
+                                        <button class="btn agregar-product"  data-clicked="0" id="agregar-product" data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
                                         <button class="btn">Ver detalles</button>
                                     </div>
                                 </div>
@@ -191,14 +197,14 @@ $result = $conn->query($query);
                 } else {
                     echo "<p class='alert-product'>No hay productos destacados disponibles.</p>";
                 }
-                $result->free(); // Liberar el resultado de la segunda consulta
+               
                 ?>
             </div>
         </div>
     <?php
 
     } else {
-        echo "Error en la consulta: " . $conn->error;
+        echo "Error en la consulta: ";
     }
     ?>
 
@@ -221,9 +227,9 @@ $result = $conn->query($query);
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <?php
-                if ($result->num_rows > 0) {
+                if ($result->rowCount() > 0) {
                     // Iterar sobre los resultados de la consulta
-                    while ($row = $result->fetch_assoc()) {
+                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                         <div class="swiper-slide">
                             <div class="div-product">
@@ -242,7 +248,7 @@ $result = $conn->query($query);
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="btn-Botones">
-                                        <button class="btn" data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
+                                        <button class="btn agregar-product" data-clicked="0" id="agregar-product" data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
                                         <button class="btn">Ver detalles</button>
                                     </div>
                                 </div>
@@ -253,14 +259,13 @@ $result = $conn->query($query);
                 } else {
                     echo "<p class='alert-product'>No hay productos destacados disponibles.</p>";
                 }
-                $result->free(); // Liberar el resultado de la segunda consulta
                 ?>
             </div>
         </div>
     <?php
 
     } else {
-        echo "Error en la consulta: " . $conn->error;
+        echo "Error en la consulta: ";
     }
     ?>
 
@@ -275,9 +280,9 @@ $result = $conn->query($query);
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <?php
-                if ($result->num_rows > 0) {
+                if ($result->rowCount() > 0) {
                     // Iterar sobre los resultados de la consulta
-                    while ($row = $result->fetch_assoc()) {
+                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                         <div class="swiper-slide">
                             <div class="div-product">
@@ -296,7 +301,7 @@ $result = $conn->query($query);
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="btn-Botones">
-                                        <button class="btn"  data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
+                                        <button class="btn agregar-product" data-clicked="0" id="agregar-product"  data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
                                         <button class="btn">Ver detalles</button>
                                     </div>
                                 </div>
@@ -307,14 +312,14 @@ $result = $conn->query($query);
                 } else {
                     echo "<p class='alert-product'>No hay productos destacados disponibles.</p>";
                 }
-                $result->free(); // Liberar el resultado de la segunda consulta
+                // Liberar el resultado de la segunda consulta
                 ?>
             </div>
         </div>
     <?php
 
     } else {
-        echo "Error en la consulta: " . $conn->error;
+        echo "Error en la consulta: ";
     }
     ?>
     <br>
@@ -324,7 +329,7 @@ $result = $conn->query($query);
 </html>
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="../js/swiper.js"></script>
 <script src="../js/slaider_js.js"></script>

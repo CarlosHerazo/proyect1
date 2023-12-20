@@ -1,42 +1,29 @@
 <?php
 
 class ConexionBD {
-    private $servername;
-    private $username;
-    private $password;
-    private $dbname;
+    private $servername = "localhost";
+    private $username = "root";
+    private $password = "root";
+    private $dbname = "pizzabd";
     private $conn;
 
-    public function __construct($servername, $username, $password, $dbname) {
-        $this->servername = $servername;
-        $this->username = $username;
-        $this->password = $password;
-        $this->dbname = $dbname;
 
-        $this->conectar();
-    }
 
-    private function conectar() {
-        $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+    public function obtenerConexion() {
+        try {
+            $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $this->conn;
 
-        if ($this->conn->connect_error) {
-            die("Conexión fallida: " . $this->conn->connect_error);
+        } catch(PDOException $e) {
+            die("Conexión fallida: " . $e->getMessage());
         }
     }
 
-    public function obtenerConexion() {
-        return $this->conn;
-    }
-
     public function cerrarConexion() {
-        $this->conn->close();
+        $this->conn = null;
     }
 }
 
-// Uso de la clase
-$conexion = new ConexionBD("localhost", "root", "root", "pizzabd");
-$conn = $conexion->obtenerConexion();
 
-// Realiza tus operaciones con la base de datos aquí
-
-
+?>
