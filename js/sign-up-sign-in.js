@@ -5,10 +5,11 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
 });
 
 // AJAX para registrar
+
 document.getElementById('registro-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    var data = {
+    let data = {
         nombre: document.querySelector('[name="name"]').value,
         email: document.querySelector('[name="email"]').value,
         contrasena: document.querySelector('[name="pass"]').value,
@@ -25,6 +26,35 @@ document.getElementById('registro-form').addEventListener('submit', function(e) 
         }
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+        
+       if(data){
+        Swal.fire({
+            position: "top-end",
+            title: "Bienvenido!!",
+            background: "#f9ba00",
+            text: data,
+            footer: "Confirma tu cuenta en tu email!!",
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            allowOutsideClick: true,
+            confirButtonArialLabel: 'Registro Exitoso',
+            imageUrl: '../img/logo.png',
+            imageWidth: '100px',
+            imageHeight: '100px',
+            imageAlt: 'Logo de la pizzeria',
+            customClass: {
+                title: 'text-alert',
+                footer: 'text-alert-Important',
+                image: 'swal2-image-circular' // Aplica la clase personalizada a la imagen
+            },
+        }).then(() => {
+            location.reload(); 
+        });
+       }
+        
+    })
     .catch(error => console.error('Error:', error));
 });
+

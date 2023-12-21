@@ -1,13 +1,8 @@
 <?php
-require_once './../model/conexion.php';
+require_once './../model/Conexion.php';
 // Crear una instancia de ConexionBD
 $conexion = new ConexionBD();
-
-// Obtener la conexión
 $conn = $conexion->obtenerConexion();
-
-// Cerrar la conexión cuando haya terminado
-$conexion->cerrarConexion();
 
 // Verifica si la conexión es exitosa
 $query = "SELECT * FROM productos WHERE destacados = 1";

@@ -10,12 +10,12 @@ body {
     background-position: center; 
     background-size: cover; 
     display: flex;
+    position: relative; /* Establece una posición relativa para el body */
     justify-content: center;
     align-items: center;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
-    margin: -20px 0 50px;
+    min-height: 100vh; /* Asegura que el body ocupe al menos la altura completa de la ventana */
 }
 
 h1 {
@@ -101,6 +101,9 @@ input {
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+    margin: auto; 
+    max-height: 100vh; 
+    overflow: auto; 
 }
 
 .form-container {
@@ -232,4 +235,18 @@ input {
     .container.right-panel-active .sign-up-container {
         transform: translateX(0);
     }
+}
+
+.text-alert{
+    color: #FFF;
+}
+
+.text-alert-Important{
+    color: #a93242;
+    font-weight: 700;
+
+}
+
+.swal2-image-circular {
+    border-radius: 50%;  /* Esto hace que la imagen sea circular */
 }
