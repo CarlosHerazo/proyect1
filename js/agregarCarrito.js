@@ -1,3 +1,12 @@
+let Toas = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+   
+})
+
 function agregarAlCarrito(elemento) {
     var productId = elemento.getAttribute('data-id');
     var productName = elemento.getAttribute('data-nombre');
@@ -23,13 +32,14 @@ document.querySelectorAll("#agregar-product").forEach(function (elemento) {
 
         // Alerta de éxito en el primer clic, alerta diferente en clics subsiguientes
         if (conteoClicks === 1) {
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Producto agregado al carrito",
-                showConfirmButton: false,
-                timer: 3500
-            });
+            Toas.fire({
+                icon: 'success',
+                title: 'Producto agregado al carrito',    
+                background: "#FF8165",
+                customClass: {
+                    title: 'text-alert',
+                },        
+            })
 
             // Actualiza el contador del carrito
             let conteoCarrito = parseInt(document.querySelector(".conteo").textContent);
@@ -37,13 +47,14 @@ document.querySelectorAll("#agregar-product").forEach(function (elemento) {
             reseteo.textContent = ++conteoCarrito;
 
         } else {
-            Swal.fire({
-                position: "top-end",
-                icon: "info",
-                title: "Cantidad en el carrito actualizada",
-                showConfirmButton: false,
-                timer: 3500
-            });
+            Toas.fire({
+                icon: 'info',
+                title: 'cantidad actualizada',
+                background : "#E6E6FA",
+                customClass: {
+                    title: 'text-alert2',                  
+                },
+            })
         }
 
 
