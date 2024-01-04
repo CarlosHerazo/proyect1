@@ -17,7 +17,7 @@
                 <input type="email" placeholder="Correo Electrónico" name="user" required/>
                 <input type="password" placeholder="Contraseña" name="contra" required/>
                 <a href="#">¿Olvidaste tu contraseña?</a>
-                <button type="submit"> Iniciar Sesión</button>
+                <button name="btn-ingresar" type="submit"> Iniciar Sesión</button>
             </form>
         </div>
 

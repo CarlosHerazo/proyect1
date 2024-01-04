@@ -16,12 +16,20 @@ class UserAjax {
         
         echo json_encode($respuesta);
     } 
+
+    public function ingresarUsuario() {
+
+        $respuesta = UserController::crtingresarUser($this->email, $this->contrasena);
+        
+        echo json_encode($respuesta);
+    } 
 }
 
 $data = json_decode(file_get_contents("php://input"), true);
 
+
 if (isset($data['action']) && $data['action'] === "registrar") {
-  
+
     $insertar = new UserAjax();
     $insertar->nombre = $data["nombre"];
     $insertar->email = $data["email"];
@@ -29,8 +37,11 @@ if (isset($data['action']) && $data['action'] === "registrar") {
     $insertar->direccion = $data["direccion"];
     $insertar->telefono = $data["telefono"];
     $insertar->registrarUsuario();
-} else {
-    echo json_encode(["error" => "Error en el registro"]);
+} elseif(isset($data['action']) && $data['action'] === "ingresar") {
+    $ingresar = new UserAjax();
+    $ingresar->email = $data["email"];
+    $ingresar->contrasena  = $data["contrasena"];
+    $ingresar->ingresarUsuario();
+}else{
+    echo json_encode(["error" => "Error en la entrada de datos"]);
 }
-
-

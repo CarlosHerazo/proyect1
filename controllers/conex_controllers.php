@@ -26,7 +26,5 @@ $conn = $conexion->obtenerConexion();
 
 // Realizar tus operaciones con la base de datos aquí
 
-// Cerrar la conexión al finalizar
-$conexion->cerrarConexion();
 
 ?>

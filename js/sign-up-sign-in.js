@@ -1,7 +1,23 @@
+
+// AJAX para ingresar
 document.getElementById('login-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    // Obtener datos del formulario
-    // Enviar datos a UserController.php usando AJAX
+    let data = {
+        email: document.querySelector('[name="user"]').value,
+        contrasena: document.querySelector('[name="contra"]').value,
+        action: "ingresar",
+    };
+    fetch('../ajax/UserAjax.php', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
 });
 
 // AJAX para registrar
@@ -29,11 +45,12 @@ document.getElementById('registro-form').addEventListener('submit', function(e) 
     .then(data => {
         
        if(data){
+        console.log(data)
         Swal.fire({
             position: "top-end",
             title: "Bienvenido!!",
             background: "#f9ba00",
-            text: data,
+            text: data.message,
             footer: "Confirma tu cuenta en tu email!!",
             showConfirmButton: false,
             timer: 5000,
@@ -49,9 +66,10 @@ document.getElementById('registro-form').addEventListener('submit', function(e) 
                 footer: 'text-alert-Important',
                 image: 'swal2-image-circular' // Aplica la clase personalizada a la imagen
             },
-        }).then(() => {
-            location.reload(); 
-        });
+        })
+        .then(() => {
+                location.reload(); 
+            });
        }
         
     })

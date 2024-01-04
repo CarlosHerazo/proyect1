@@ -19,8 +19,8 @@ class UserModel
             $stmt->bindValue(":hash", $hash);
 
             if ($stmt->execute()) {
-                MailSender::sendActivationEmail($email, $nombre, $hash);
-                return ["status" => "success", "hash" => $hash];
+                // MailSender::sendActivationEmail($email, $nombre, $hash);
+                return ["status" => "success", "hash" => $hash, "message" => "Registro exitoso"];
             } else {
                 return ["status" => "error", "message" => "Upps. Hubo un error en el Registro"];
             }
@@ -45,6 +45,38 @@ class UserModel
             }
         } catch (PDOException $e) {
             return "Error en la base de datos: " . $e->getMessage();
+        }
+    }
+
+
+    // metodo para ingresar un usuario
+
+    static public function mdlIngresarUser($email, $contrasena)
+    {
+        try {
+            // Preparar la sentencia SQL
+            $stmt = ConexionBD::obtenerConexion()->prepare("SELECT * FROM user WHERE correo = :email");
+
+            // Vincular el parámetro
+            $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+
+            // Ejecutar la consulta
+            $stmt->execute();
+
+            // Obtener el resultado
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Verificar si se encontró un usuario y la contraseña es válida
+            if ($usuario && password_verify($contrasena, $usuario['contra'])) {
+                $response =  array("status" => "success", "message" => "Bienvenido", "nombre" => $usuario['nombre'], "correo" => $usuario['correo'], "telefono" => $usuario['telefono'], "direccion" => $usuario['direccion']);
+                // Almacenar la información en la sesión
+                $_SESSION['user_info'] = $response;
+                return $response;
+            } else {
+                return array("status" => "error", "message" => "Credenciales incorrectas");
+            }
+        } catch (PDOException $e) {
+            return array("status" => "error", "message" => "Error al realizar la consulta: " . $e->getMessage());
         }
     }
 }

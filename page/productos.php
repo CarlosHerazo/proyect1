@@ -20,7 +20,7 @@ if (isset($_GET['precio']) && is_numeric($_GET['precio'])) {
 $result = $conn->query($query);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
