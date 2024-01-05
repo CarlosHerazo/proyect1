@@ -8,9 +8,9 @@ require '../vendor/autoload.php'; // Es mejor requerir el autoload fuera de la c
 class MailSender
 {
     // Definir constantes para los detalles de configuración SMTP
-    private const SMTP_HOST = 'smtp.mailtrap.io';
+    private const SMTP_HOST = 'sandbox.smtp.mailtrap.io';
     private const SMTP_USER = '9e65de019069a9';
-    private const SMTP_PASSWORD = '********5069';
+    private const SMTP_PASSWORD = '69b9dcb3445069';
     private const SMTP_SECURE = 'tls';
     private const SMTP_PORT = 2525;
     private const MAIL_FROM = 'admin@herazodv.com';
@@ -40,7 +40,7 @@ class MailSender
             $mail->CharSet = 'UTF-8';
 
             // Definir el contenido del correo
-            $contenido = "<html><body><p>Hola, {$nombre}.<br>Por favor, activa tu cuenta haciendo clic en el siguiente enlace: <a href='http://localhost/proyectos%20de%20ptractica/PROY1/model/activar-user.php?email={$email}&hash={$hash}'>Activar Cuenta</a></p></body></html>";
+            $contenido = "<html><body><p>Hola, {$nombre}.<br>Por favor, activa tu cuenta haciendo clic en el siguiente enlace: <a href='http://localhost/PROYECT1/model/activar-user.php?email={$email}&hash={$hash}'>Activar Cuenta</a></p></body></html>";
             $mail->Body = $contenido;
 
             // Enviar el correo

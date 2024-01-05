@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+require '../model/config.php';
 
 if (isset($_POST['accion'], $_POST['indice'])) {
     $indice = $_POST['indice'];

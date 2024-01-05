@@ -1,6 +1,7 @@
 <?php
+require 'config.php';
 require 'Conexion.php';
-
+require '../controllers/Correo_controllers.php';
 class UserModel
 {
     // Método para registrar usuario
@@ -19,7 +20,7 @@ class UserModel
             $stmt->bindValue(":hash", $hash);
 
             if ($stmt->execute()) {
-                // MailSender::sendActivationEmail($email, $nombre, $hash);
+                MailSender::sendActivationEmail($email, $nombre, $hash);
                 return ["status" => "success", "hash" => $hash, "message" => "Registro exitoso"];
             } else {
                 return ["status" => "error", "message" => "Upps. Hubo un error en el Registro"];
@@ -33,7 +34,7 @@ class UserModel
     static public function mdlActivarUsuario($hash, $email)
     {
         try {
-            $stmt = ConexionBD::obtenerConexion()->prepare("UPDATE user SET activo = 1 WHERE hash = :hash AND correo = :email");
+            $stmt = ConexionBD::obtenerConexion()->prepare("UPDATE user SET activo = 1, hash = NULL WHERE hash = :hash AND correo = :email");
 
             $stmt->bindValue(":hash", $hash);
             $stmt->bindValue(":email", $email);

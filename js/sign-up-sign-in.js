@@ -1,4 +1,3 @@
-
 // AJAX para ingresar
 document.getElementById('login-form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -15,9 +14,15 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
         }
     })
     .then(response => response.json())
-    .then(data => {
-        console.log(data);
+    .then(data => {  
+        if (data.status === "success") {
+            // Redirigir a otra página
+            window.location.href = 'productos.php';
+        }
     })
+    .catch(error => {
+        console.error('Error al procesar la respuesta:', error);
+    });
 });
 
 // AJAX para registrar

@@ -1,5 +1,4 @@
 <?php
-require 'Conexion.php';
 require 'UserModel.php';
 
 if (isset($_GET['hash']) && isset($_GET['email'])) {
