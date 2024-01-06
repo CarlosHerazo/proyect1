@@ -225,6 +225,7 @@ body {
 
 .btn:hover {
     background-color: #CC5220; /* Oscurecer el botón al pasar el ratón */
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {

@@ -110,27 +110,46 @@ $preference->save();
                 </table>
                 <div class="merca-btn pagar">
 
-                    </div>
+                </div>
 
 
                 <!--SDK MercadoPago.js-->
                 <script src="https://sdk.mercadopago.com/js/v2"></script>
+                <!-- Agrega SweetAlert CSS -->
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+                <!-- Tu código existente -->
                 <script>
                     const publicKey = 'TEST-a68b8fde-2220-4039-b998-287ecd3e9a48';
                     const mp = new MercadoPago(publicKey, {
                         locale: 'es-CO'
                     });
 
-                    const checkout = mp.checkout({
-                        preference: {
-                            id: '<?php echo $preference->id; ?>'
-                        },
-                        render: {
-                            container: '.merca-btn',
-                            label: 'Proceder a pagar',
-                        }
-                    })
+
+                    // Verificar si hay productos en el carrito (supongamos que existe una variable de sesión 'carrito')
+                    <?php if (!empty($_SESSION['carrito'])) : ?>
+                        // Inicializar el checkout solo si hay productos en el carrito
+                        const checkout = mp.checkout({
+                            preference: {
+                                id: '<?php echo $preference->id; ?>'
+                            },
+                            render: {
+                                container: '.merca-btn',
+                                label: 'Proceder a pagar',
+                            },
+                        });
+                    <?php else : ?>
+                        // Mostrar la alerta si no hay productos en el carrito
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error al procesar el pago',
+                            text: 'No hay productos en el carrito aún',
+                        });
+                    <?php endif; ?>
                 </script>
+
+
+
             </div>
         </div>
 

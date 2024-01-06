@@ -9,13 +9,14 @@ class UserModel
     {
         try {
             $hash = md5(uniqid(rand(), true)); // Generación del hash
+            $emailMinus = strtolower($email);
             $stmt = ConexionBD::obtenerConexion()->prepare("INSERT INTO user (nombre, direccion, telefono, correo, contra, activo, hash) VALUES (:nombre, :direccion, :telefono, :correo, :contra, 0, :hash)");
 
             // Vinculación de parámetros
             $stmt->bindValue(":nombre", $nombre);
             $stmt->bindValue(":direccion", $direccion);
             $stmt->bindValue(":telefono", $telefono, PDO::PARAM_INT);
-            $stmt->bindValue(":correo", $email);
+            $stmt->bindValue(":correo", $emailMinus);
             $stmt->bindValue(":contra", $contrasena);
             $stmt->bindValue(":hash", $hash);
 
@@ -34,10 +35,11 @@ class UserModel
     static public function mdlActivarUsuario($hash, $email)
     {
         try {
+            $emailMinus = strtolower($email);
             $stmt = ConexionBD::obtenerConexion()->prepare("UPDATE user SET activo = 1, hash = NULL WHERE hash = :hash AND correo = :email");
 
             $stmt->bindValue(":hash", $hash);
-            $stmt->bindValue(":email", $email);
+            $stmt->bindValue(":email", $emailMinus);
 
             if ($stmt->execute()) {
                 return "Cuenta activada con éxito";
@@ -55,11 +57,12 @@ class UserModel
     static public function mdlIngresarUser($email, $contrasena)
     {
         try {
+            $emailMinus = strtolower($email);
             // Preparar la sentencia SQL
             $stmt = ConexionBD::obtenerConexion()->prepare("SELECT * FROM user WHERE correo = :email");
 
             // Vincular el parámetro
-            $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+            $stmt->bindParam(":email", $emailMinus, PDO::PARAM_STR);
 
             // Ejecutar la consulta
             $stmt->execute();
