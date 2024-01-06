@@ -1,7 +1,38 @@
 <?php
 require '../model/conexion.php';
 require '../controllers/ajaxCarrito.php';
+require '../vendor/autoload.php';
 
+// token unico
+$acces_token = 'TEST-1929945631473175-010610-6d3457c4001965ea3f01a463b5dfb433-1110948150';
+MercadoPago\SDK::setAccessToken($acces_token);
+
+
+// creamos una preferencia
+$preference = new MercadoPago\Preference();
+
+
+$preference->back_urls = array(
+    "success" => "http://localhost/proyect1/page/confirmacion.php",
+    "failure" => "http://localhost/mercado_pago/falla.php",
+);
+
+$preference->binary_mode = true;
+
+// creamos un array para los productos
+$productos = [];
+if (!empty($_SESSION['carrito'])) {
+    foreach ($_SESSION['carrito'] as $indice => $producto) {
+        $item = new MercadoPago\Item();
+        $item->title = $producto['nombre'];
+        $item->quantity = $producto['cantidad'];
+        $item->unit_price = $producto['precio'];
+        array_push($productos, $item);
+    }
+}
+
+$preference->items = $productos;
+$preference->save();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,6 +53,7 @@ require '../controllers/ajaxCarrito.php';
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;500;600;0,800;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <title>Carrito</title>
+
 </head>
 
 <body>
@@ -76,10 +108,29 @@ require '../controllers/ajaxCarrito.php';
                         </tr>
                     <?php endif; ?>
                 </table>
-                <button class="pagar">
-                    Proceder a pagar
-                </button>
+                <div class="merca-btn pagar">
 
+                    </div>
+
+
+                <!--SDK MercadoPago.js-->
+                <script src="https://sdk.mercadopago.com/js/v2"></script>
+                <script>
+                    const publicKey = 'TEST-a68b8fde-2220-4039-b998-287ecd3e9a48';
+                    const mp = new MercadoPago(publicKey, {
+                        locale: 'es-CO'
+                    });
+
+                    const checkout = mp.checkout({
+                        preference: {
+                            id: '<?php echo $preference->id; ?>'
+                        },
+                        render: {
+                            container: '.merca-btn',
+                            label: 'Proceder a pagar',
+                        }
+                    })
+                </script>
             </div>
         </div>
 

@@ -47,6 +47,7 @@ if (isset($_SESSION['user_info'])) {
             <p><span>Telefono:</span> <?php echo $telefono ?></p>
             <p><span>Direccion:</span> <?php echo $direccion ?></p>
         </div>
+        <a class="logout" href="../controllers/userDestroy.php">Cerrar sesion</a>
     </section>
 
    <?php require '../globals/footers.php'; ?>

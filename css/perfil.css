@@ -53,3 +53,21 @@ p {
 span{
     font-weight: bold;
 }
+
+.logout {
+    background-color: #fff; /* Un tono más suave de rojo */
+    color: #C0392B;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #C0392B;
+    transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+    background-color: #C0392B; /* Un tono más oscuro al pasar el ratón */
+    color: #fff;
+}

@@ -1,8 +1,9 @@
-.carrito{
+.carrito {
     display: flex;
     position: relative;
 }
-.conteo{
+
+.conteo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,28 +19,32 @@
 
 .container-compra {
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
-    margin: 20px; 
+    margin: 20px;
 }
 
 .listado {
-    width: 80%; /* Ajusta el ancho del contenedor de la tabla */
-    margin-bottom: 20px; /* Espacio debajo del contenedor de la tabla */
+    width: 80%;
+    /* Ajusta el ancho del contenedor de la tabla */
+    margin-bottom: 20px;
+    /* Espacio debajo del contenedor de la tabla */
 }
 
 table {
-    border-spacing: 0; /* Elimina el espacio entre celdas */
+    border-spacing: 0;
+    /* Elimina el espacio entre celdas */
     width: 100%;
     border-collapse: separate;
     text-align: center;
     margin-top: 20px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
-    
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
 
 }
 
-th, td {
+th,
+td {
     padding: 10px;
     border: 1px solid #ddd;
 
@@ -50,16 +55,18 @@ th {
     color: white;
 }
 
-table{
-    border-top-right-radius: 50px ; /* Agrega un borde derecho a la última celda de cada fila */
+table {
+    border-top-right-radius: 50px;
+    /* Agrega un borde derecho a la última celda de cada fila */
 }
 
 table tr th:last-child {
-    border-top-right-radius: 50px ; /* Agrega un borde derecho a la última celda de cada fila */
+    border-top-right-radius: 50px;
+    /* Agrega un borde derecho a la última celda de cada fila */
 }
 
 
-.tr:hover { 
+.tr:hover {
     background-color: #ddd;
 }
 
@@ -69,62 +76,71 @@ tr:nth-child(even) {
 
 
 table td i.fas.fa-trash {
-    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clickeable */
-    color: #E74C3C; /* Color rojo para el ícono de basura, indicando acción de eliminar */
-    font-size: 1.2em; /* Tamaño ligeramente más grande para el ícono */
+    cursor: pointer;
+    /* Cambia el cursor a una mano para indicar que es clickeable */
+    color: #E74C3C;
+    /* Color rojo para el ícono de basura, indicando acción de eliminar */
+    font-size: 1.2em;
+    /* Tamaño ligeramente más grande para el ícono */
 }
 
 table td i.fas.fa-trash:hover {
-    color: #C0392B; /* Color más oscuro al pasar el mouse por encima para efecto de hover */
+    color: #C0392B;
+    /* Color más oscuro al pasar el mouse por encima para efecto de hover */
 }
 
-.total{
+.total {
     display: flex;
-    flex-direction: column; /* Organiza los elementos en columna */
+    flex-direction: column;
+    /* Organiza los elementos en columna */
     align-items: center;
-    max-width: 100%; 
-    padding: 20px; 
-    background-color: #fff; 
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
-    text-align: center; 
+    max-width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 /* Estilos para botones o elementos adicionales en .pagar */
 
-.pagar{ 
-    padding: 10px 20px;
+
+.merca-btn {
+    margin-top: 20px;
+}
+
+.mercadopago-button {
+    background-color: #FF6347;
+}
+
+.mercadopago-button:hover {
+    background-color: #C0392B;
+}
+
+/* Estilos generales para los botones de incremento y decremento */
+.incremento,
+.decremento {
     background-color: #FF6347;
     color: white;
     border: none;
-    border-radius: 5px;
-    cursor: pointer; 
-    margin-top: 10px; 
+    padding: 5px 8px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-.pagar:hover {
-    background-color: #e55347; /* Cambia el color al pasar el cursor */
-}
-
-
-/* Estilos generales para los botones de incremento y decremento */
-.incremento, .decremento {
-    background-color: #FF6347; 
-    color: white; 
-    border: none;
-    padding: 5px 8px; 
-    font-size: 1em; 
-    border-radius: 4px; 
-    cursor: pointer; 
-    margin-left: 5px; 
-    margin-right: 5px; 
-}
-
-.incremento:hover, .decremento:hover {
-    background-color: #367c39; /* Color de fondo más oscuro al pasar el mouse */
+.incremento:hover,
+.decremento:hover {
+    background-color: #367c39;
+    /* Color de fondo más oscuro al pasar el mouse */
 }
 
 /* Estilo para deshabilitar botones (opcional) */
-.incremento:disabled, .decremento:disabled {
-    background-color: #cccccc; /* Color de fondo gris para botón deshabilitado */
-    cursor: not-allowed; /* Cambia el cursor para indicar que el botón está deshabilitado */
+.incremento:disabled,
+.decremento:disabled {
+    background-color: #cccccc;
+    /* Color de fondo gris para botón deshabilitado */
+    cursor: not-allowed;
+    /* Cambia el cursor para indicar que el botón está deshabilitado */
 }
