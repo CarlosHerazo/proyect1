@@ -5,6 +5,10 @@ body {
     padding: 0;
 }
 
+.main{
+    background-color: #fff;    
+}
+
 header {
     background-color: #333;
     color: #fff;
@@ -71,3 +75,55 @@ span{
     background-color: #C0392B; /* Un tono más oscuro al pasar el ratón */
     color: #fff;
 }
+
+/*cards*/
+
+.card1,
+.card2,
+.card3 {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+    width: 300px;
+    margin: 20px;
+    cursor: pointer;
+    padding: 20px;
+  }
+
+
+  .card1 {
+    background-color: #FF6347;
+    color: #fff;
+  }
+
+  .card2 {
+    background-color: #3498db;
+    color: #fff;
+  }
+
+  .card3 {
+    background-color: #2ecc71;
+    color: #fff;
+  }
+  .card:hover {
+    transform: scale(1.05);
+  }
+  .a-links {
+    display: inline-block;
+    padding: 8px 16px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Agregar sombra al texto */
+  }
+  
+  .a-links:hover {
+    background-color: #2980b9;
+    transform: scale(1.1); /* Hacer que el enlace se agrande al pasar el mouse */
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Cambiar la sombra al pasar el mouse */
+  }
+  
+  
+

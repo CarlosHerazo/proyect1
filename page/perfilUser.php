@@ -24,9 +24,8 @@ if (isset($_SESSION['user_info'])) {
     $nombre = $userInfo['nombre'];
     $correo = $userInfo['correo'];
     $telefono = $userInfo['telefono'];
-    $mensaje= $userInfo['message'];
+    $mensaje = $userInfo['message'];
     $direccion = $userInfo['direccion'];
-
 } else {
     // Si la información del usuario no está presente en la sesión, redirigir.
     header('Location: ./login.php');
@@ -36,21 +35,38 @@ if (isset($_SESSION['user_info'])) {
 
 <body>
     <br><br><br>
-    <section>
-        <div class="contenedor_img">
-            <img class="img-perfil" src="./../img/perfil.png" alt="Imagen de perfil">
-        </div>
-        <div class="contenedor_info">
-            <h1 class="perfil-title"><?php echo $mensaje?> !!!</h1>
-            <h2><?php echo $nombre ?></h2>
-            <p><span> Correo electrónico:</span> <?php echo $correo ?></p>
-            <p><span>Telefono:</span> <?php echo $telefono ?></p>
-            <p><span>Direccion:</span> <?php echo $direccion ?></p>
-        </div>
-        <a class="logout" href="../controllers/userDestroy.php">Cerrar sesion</a>
-    </section>
+    <main class="main">
+        <section>
+            <div class="contenedor_img">
+                <img class="img-perfil" src="./../img/perfil.png" alt="Imagen de perfil">
+            </div>
+            <div class="contenedor_info">
+                <h1 class="perfil-title"><?php echo $mensaje ?> !!!</h1>
+                <h2><?php echo $nombre ?></h2>
+                <p><span> Correo electrónico:</span> <?php echo $correo ?></p>
+                <p><span>Telefono:</span> <?php echo $telefono ?></p>
+                <p><span>Direccion:</span> <?php echo $direccion ?></p>
+            </div>
+            <a class="logout" href="../controllers/userDestroy.php">Cerrar sesion</a>
+        </section>
+        <section>
+            <div class="card1">
+                <h2>productos por Pagar <span><?php echo count($_SESSION['carrito']); ?></span></h2>
+                <a class="a-links " href="./carrito.php">Ver detalles</a>
+            </div>
 
-   <?php require '../globals/footers.php'; ?>
+            <div class="card2">
+                <h2>Pedidos por Recibir <span>1</span></h2>
+                <a class="a-links " href="./carrito.php">Ver detalles</a>
+            </div>
+
+            <div class="card3">
+                <h2>Pedidos Completados <span>1</span></h2>
+                <a class="a-links " href="./carrito.php">Ver detalles</a>
+            </div>
+        </section>
+    </main>
+    <?php require '../globals/footers.php'; ?>
 </body>
 
 </html>
