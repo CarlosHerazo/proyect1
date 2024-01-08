@@ -33,12 +33,26 @@ if (isset($_SESSION['user_info'])) {
     header('Location: ./login.php');
     exit();
 }
+
+$stmt = ConexionBD::obtenerConexion()->prepare("SELECT id FROM user WHERE nombre = :nombre");
+$stmt->bindParam(':nombre', $nombre);
+if ($stmt->execute()) {
+    // La consulta se ejecutó con éxito
+    $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Ahora, $resultados contiene un array asociativo con las filas resultantes de la consulta
+    foreach ($resultados as $fila) {
+        $usuarioId = $fila['id'];
+    }
+} else {
+    // Manejar el caso en el que la ejecución de la consulta falló
+}
 ?>
 
 <body>
     <div id="myModal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>          
+            <span class="close" onclick="closeModal()">&times;</span>
             <h2>Pedidos por recibir</h2>
             <table>
                 <thead>
@@ -52,8 +66,11 @@ if (isset($_SESSION['user_info'])) {
                 </thead>
                 <tbody>
                     <?php
-                    $stmt = ConexionBD::obtenerConexion()->prepare("SELECT * FROM `pedido` WHERE clienteId=1");
+                    $stmt = ConexionBD::obtenerConexion()->prepare("SELECT * FROM `pedido` WHERE clienteId=:usuarioId");
+                    $stmt->bindValue(":usuarioId", $usuarioId);
                     if ($stmt->execute()) {
+                        // Vinculación de parámetros
+                   
                         if ($stmt->rowCount() > 0) {
                             while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 $id = $fila['id'];
