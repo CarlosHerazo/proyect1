@@ -26,14 +26,14 @@ $totalCompra = 0;
 foreach ($_SESSION['carrito'] as $detalleProducto) {
     $totalCompra += $detalleProducto['cantidad'] * $detalleProducto['precio'];
 }
-
+date_default_timezone_set('America/Bogota');
 // Insertar la compra en la tabla 'pedido'
 $sqlPedido = "INSERT INTO pedido (clienteId, fecha, estado, total) VALUES (:clienteId, :fecha, :estado, :total)";
 $stmtPedido = ConexionBD::obtenerConexion()->prepare($sqlPedido);
 
 if (!$stmtPedido || !$stmtPedido->execute([
     ':clienteId' => $idCliente,
-    ':fecha' => date('Y-m-d H:i:s', strtotime('now')),
+    ':fecha' =>  date('Y-m-d H:i:s'),
     ':estado' => "En proceso",
     ':total' => $totalCompra
  

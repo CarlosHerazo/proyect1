@@ -58,5 +58,4 @@
     </div>
     <a href="../controllers/carritoDestroy.php">Volver al carrito</a>
 </body>
-
 </html>

@@ -38,16 +38,16 @@ if (isset($_SESSION['user_info'])) {
 <body>
     <div id="myModal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeModal()">&times;</span>          
             <h2>Pedidos por recibir</h2>
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Fecha</th>
-                        <th>estado</th>
-                        <th>total</th>
-                        <th>factura</th>
+                        <th>Estado</th>
+                        <th>Total</th>
+                        <th>Factura</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,14 +58,15 @@ if (isset($_SESSION['user_info'])) {
                             while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 $id = $fila['id'];
                                 $totalFactura = $fila['total'];
-                                $fecha = $fila['fecha'];
+                                $fecha = date("d/m/Y H:i:s", strtotime($fila['fecha']));
+                                $estado = "En proceso";
                                 $factura = $fila['factura'];
                     ?>
                                 <tr>
                                     <td><?php echo $id ?></td>
                                     <td><?php echo $fecha ?></td>
-                                    <td><span class="estado">En proceso</span></td>
-                                    <td><?php echo $totalFactura ?></td>
+                                    <td><span class="estado"><?php echo $estado ?></span></td>
+                                    <td><?php echo "$" . number_format($totalFactura, 2); ?></td>
                                     <td><a href="../factura/invoice.php" target="_blank"><i class="fas fa-file-pdf"></i></a></td>
                                 </tr>
                     <?php
@@ -74,14 +75,14 @@ if (isset($_SESSION['user_info'])) {
                             echo "<tr><td colspan='5'>No se encontraron resultados.</td></tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='5'>Error al ejecutar la consulta.</td></tr>";
+                        echo "<tr><td colspan='5'>Error al ejecutar la consulta: " . print_r($stmt->errorInfo(), true) . "</td></tr>";
                     }
                     ?>
-                    <!-- Agrega más filas según sea necesario -->
                 </tbody>
             </table>
         </div>
     </div>
+
 
     <br><br><br>
     <main class="main">
