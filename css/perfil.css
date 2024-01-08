@@ -126,4 +126,87 @@ span{
   }
   
   
+/*Modal*/
+
+#myModal {
+    display: none;
+    position: fixed;
+    color: #333;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  #myModal.show {
+    opacity: 1;
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 10px;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+  td{
+    color: #333;
+  }
+
+  th {
+    background-color: #FF6347;
+    color: #fff;
+  }
+
+table tr th:last-child {
+    border-top-right-radius: 0;
+    /* Agrega un borde derecho a la última celda de cada fila */
+}
+.estado {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #c6c30d; /* Color de fondo verde (puedes cambiarlo) */
+    color: #fff; /* Color del texto blanco (puedes cambiarlo) */
+    border-radius: 5px;
+}
+
+.fa-file-pdf{
+    color: #C0392B;
+    font-size: 40px;
+}
+
+.fa-file-pdf:hover{
+    cursor: pointer;
+}
 

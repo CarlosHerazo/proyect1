@@ -11,7 +11,7 @@ MercadoPago\SDK::setAccessToken($acces_token);
 $preference = new MercadoPago\Preference();
 
 $preference->back_urls = array(
-    "success" => "http://localhost/proyect1/page/confirmacion.php",
+    "success" => "http://localhost/proyect1/controllers/carritoPedido.php",
     "failure" => "http://localhost/proyect1/page/falla.php",
 );
 

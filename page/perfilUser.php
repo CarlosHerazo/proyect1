@@ -14,7 +14,9 @@
 </head>
 
 <?php
+require('../model/Conexion.php');
 require '../globals/headers.php';
+
 
 if (isset($_SESSION['user_info'])) {
     // Acceder a la información del usuario
@@ -34,6 +36,53 @@ if (isset($_SESSION['user_info'])) {
 ?>
 
 <body>
+    <div id="myModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Pedidos por recibir</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha</th>
+                        <th>estado</th>
+                        <th>total</th>
+                        <th>factura</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $stmt = ConexionBD::obtenerConexion()->prepare("SELECT * FROM `pedido` WHERE clienteId=1");
+                    if ($stmt->execute()) {
+                        if ($stmt->rowCount() > 0) {
+                            while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                $id = $fila['id'];
+                                $totalFactura = $fila['total'];
+                                $fecha = $fila['fecha'];
+                                $factura = $fila['factura'];
+                    ?>
+                                <tr>
+                                    <td><?php echo $id ?></td>
+                                    <td><?php echo $fecha ?></td>
+                                    <td><span class="estado">En proceso</span></td>
+                                    <td><?php echo $totalFactura ?></td>
+                                    <td><a href="../factura/invoice.php" target="_blank"><i class="fas fa-file-pdf"></i></a></td>
+                                </tr>
+                    <?php
+                            }
+                        } else {
+                            echo "<tr><td colspan='5'>No se encontraron resultados.</td></tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='5'>Error al ejecutar la consulta.</td></tr>";
+                    }
+                    ?>
+                    <!-- Agrega más filas según sea necesario -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <br><br><br>
     <main class="main">
         <section>
@@ -57,7 +106,7 @@ if (isset($_SESSION['user_info'])) {
 
             <div class="card2">
                 <h2>Pedidos por Recibir <span>1</span></h2>
-                <a class="a-links " href="./carrito.php">Ver detalles</a>
+                <a class="a-links " onclick="openModal()">Ver detalles</a>
             </div>
 
             <div class="card3">
@@ -66,6 +115,7 @@ if (isset($_SESSION['user_info'])) {
             </div>
         </section>
     </main>
+    <script src="../js/modal_pedidos.js"></script>
     <?php require '../globals/footers.php'; ?>
 </body>
 
