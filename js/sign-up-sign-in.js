@@ -16,8 +16,17 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
     .then(response => response.json())
     .then(data => {  
         if (data.status === "success") {
-            // Redirigir a otra página
             window.location.href = 'productos.php';
+        }else if(data.status === "error"){
+            Swal.fire({
+                position: "top-end",
+                title: "UPPSS!!",
+                text: data.message,
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                allowOutsideClick: true,
+            })
         }
     })
     .catch(error => {

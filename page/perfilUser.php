@@ -28,25 +28,14 @@ if (isset($_SESSION['user_info'])) {
     $telefono = $userInfo['telefono'];
     $mensaje = $userInfo['message'];
     $direccion = $userInfo['direccion'];
+    $id_cliente = $userInfo['id_Cliente'];
 } else {
     // Si la información del usuario no está presente en la sesión, redirigir.
     header('Location: ./login.php');
     exit();
 }
 
-$stmt = ConexionBD::obtenerConexion()->prepare("SELECT id FROM user WHERE nombre = :nombre");
-$stmt->bindParam(':nombre', $nombre);
-if ($stmt->execute()) {
-    // La consulta se ejecutó con éxito
-    $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Ahora, $resultados contiene un array asociativo con las filas resultantes de la consulta
-    foreach ($resultados as $fila) {
-        $usuarioId = $fila['id'];
-    }
-} else {
-    // Manejar el caso en el que la ejecución de la consulta falló
-}
 ?>
 
 <body>
@@ -66,14 +55,14 @@ if ($stmt->execute()) {
                 </thead>
                 <tbody>
                     <?php
-                    $stmt = ConexionBD::obtenerConexion()->prepare("SELECT * FROM `pedido` WHERE clienteId=:usuarioId");
-                    $stmt->bindValue(":usuarioId", $usuarioId);
+                    $stmt = ConexionBD::obtenerConexion()->prepare("SELECT * FROM `pedidos` WHERE ID_Cliente=:clienteId");
+                    $stmt->bindValue(":clienteId", $id_cliente);
                     if ($stmt->execute()) {
                         // Vinculación de parámetros
                    
                         if ($stmt->rowCount() > 0) {
                             while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                $id = $fila['id'];
+                                $id = $fila['ID_Pedido'];
                                 $totalFactura = $fila['total'];
                                 $fecha = date("d/m/Y H:i:s", strtotime($fila['fecha']));
                                 $estado = "En proceso";
@@ -109,7 +98,9 @@ if ($stmt->execute()) {
             </div>
             <div class="contenedor_info">
                 <h1 class="perfil-title"><?php echo $mensaje ?> !!!</h1>
-                <h2><?php echo $nombre ?></h2>
+                <h2><?php echo $nombre?></h2>
+                
+                <p><span> Cliente_ID:</span> <?php echo $id_cliente ?></p>
                 <p><span> Correo electrónico:</span> <?php echo $correo ?></p>
                 <p><span>Telefono:</span> <?php echo $telefono ?></p>
                 <p><span>Direccion:</span> <?php echo $direccion ?></p>

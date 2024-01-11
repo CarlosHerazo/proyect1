@@ -59,14 +59,14 @@ $pdf->Cell(116, 7, iconv("UTF-8", "ISO-8859-1", $fechaHoraActual), 0, 0, 'L');
 
 $pdf->SetFont('Arial', 'B', 10);
 $pdf->SetTextColor(39, 39, 51);
-$stmt = ConexionBD::obtenerConexion()->prepare("SELECT `id` FROM `pedido`");
+$stmt = ConexionBD::obtenerConexion()->prepare("SELECT `ID_Pedido` FROM `pedidos`");
 if ($stmt->execute()) {
 	// La consulta se ejecutó correctamente
 	if ($stmt->rowCount() > 0) {
 		// Hay al menos una fila devuelta
 		while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
 			// Procesar los resultados aquí
-			$id = $fila['id'];
+			$id = $fila['ID_Pedido'];
 		}
 	} else {
 		// No se encontraron filas

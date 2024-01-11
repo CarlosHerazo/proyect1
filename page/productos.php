@@ -7,7 +7,7 @@ $conn = $conexion->obtenerConexion();
 // Verifica si la conexión es exitosa
 $query = "SELECT * FROM productos WHERE destacados = 1";
 
-if (isset($_GET['categoria']) && !empty($_GET['categoria'])) {
+if (isset($_GET['Categoria']) && !empty($_GET['Categoria'])) {
     $categoria = $_GET['categoria'];
     $query .= " AND categoria = '$categoria'";
 }
@@ -48,11 +48,11 @@ $result = $conn->query($query);
 
     <!--comienzo del Main-->
     <Main class="main-content">
-        <div id="loader-wrapper">
+        <!-- <div id="loader-wrapper">
             <div id="loader">
-                <img src="../img/logo.png" alt="Cargando..."> <!-- Cambia con tu imagen -->
+                <img src="../img/logo.png" alt="Cargando..."> 
             </div>
-        </div>
+        </div> -->
         <!--Asaide-->
         <br><br><br><br>
         <div class="pizza-aside-separacion">
@@ -118,7 +118,7 @@ $result = $conn->query($query);
                                             <i class="fas fa-star"></i>
                                         </div>
                                         <div class="btn-Botones">
-                                            <button class="btn" id="agregar-product" data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
+                                            <button class="btn" id="agregar-product" data-id ="<?php echo ($row['ID_Producto'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
                                             <button class="btn">Ver detalles</button>
                                         </div>
                                     </div>
@@ -243,7 +243,7 @@ $result = $conn->query($query);
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="btn-Botones">
-                                        <button class="btn agregar-product" data-clicked="0" id="agregar-product" data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
+                                        <button class="btn agregar-product" data-clicked="0" id="agregar-product" data-id ="<?php echo ($row['ID_Producto'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
                                         <button class="btn">Ver detalles</button>
                                     </div>
                                 </div>
@@ -328,7 +328,7 @@ $result = $conn->query($query);
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="../js/swiper.js"></script>
 <script src="../js/slaider_js.js"></script>
-<script src="../js/cargando.js"></script>
+<!-- <script src="../js/cargando.js"></script> -->
 <script src="../js/agregarCarrito.js"></script>
 </body>
 
