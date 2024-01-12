@@ -8,7 +8,7 @@ if (!isset($_SESSION['carrito'])) {
 }
 
 $usuario = $_SESSION['user_info'];
-echo $id_cliente = $usuario['id_Cliente'];
+$id_cliente = $usuario['id_Cliente'];
 $nombre = $usuario['nombre'];
 
 
@@ -20,17 +20,27 @@ foreach ($_SESSION['carrito'] as $detalleProducto) {
 date_default_timezone_set('America/Bogota');
 // Insertar la compra en la tabla 'pedido'
 $sqlPedido = "INSERT INTO pedidos (ID_Cliente, fecha, estado, total) VALUES (:clienteId, :fecha, :estado, :total)";
-$stmtPedido = ConexionBD::obtenerConexion()->prepare($sqlPedido);
+$conexion = ConexionBD::obtenerConexion();
+$stmtPedido = $conexion->prepare($sqlPedido);
 
-if (!$stmtPedido || !$stmtPedido->execute([
-    ':clienteId' => $id_cliente,
-    ':fecha' =>  date('Y-m-d H:i:s'),
-    ':estado' => "En preparación",
-    ':total' => $totalCompra
-
-])) {
-    echo "Error al insertar datos en la base de datos.";
+if($stmtPedido){
+    if ($stmtPedido->execute([
+        ':clienteId' => $id_cliente,
+        ':fecha' =>  date('Y-m-d H:i:s'),
+        ':estado' => "En preparación",
+        ':total' => $totalCompra
+    ])) {
+        // Obtener el último ID insertado
+        $ultimoIdPedido = $conexion->lastInsertId();
+        echo "Pedido insertado con éxito. ID del pedido: " . $ultimoIdPedido;
+    } else {
+        echo "Error al insertar datos en la base de datos.";
+        exit();
+    }
+} else {
+    echo "Error al preparar la consulta.";
     exit();
 }
 
-header("Location: ../page/confirmacion.php");
+
+// header("Location: ../page/confirmacion.php");

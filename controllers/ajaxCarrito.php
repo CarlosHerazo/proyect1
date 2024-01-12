@@ -55,7 +55,7 @@ if (isset($_POST['accion'], $_POST['indice'])) {
         }
     }
 
-
+var_dump(  $_SESSION['carrito']);
     $total = 0;
     foreach ($_SESSION['carrito'] as $producto) {
         $total += $producto['subtotal']; // Suma el subtotal de cada producto al total

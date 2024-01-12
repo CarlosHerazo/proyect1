@@ -117,15 +117,12 @@ span{
     border-radius: 4px;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Agregar sombra al texto */
-  }
+  } 
   
-  .a-links:hover {
-    background-color: #2980b9;
+.a-links:hover {
     transform: scale(1.1); /* Hacer que el enlace se agrande al pasar el mouse */
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Cambiar la sombra al pasar el mouse */
   }
-  
-  
 /*Modal*/
 #myModal {
     display: none;
