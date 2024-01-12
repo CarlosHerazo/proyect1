@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/perfil.css">
     <!-- ... tus otros enlaces y scripts ... -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
     <title>Perfil User</title>
 </head>
 
@@ -43,7 +43,7 @@ if (isset($_SESSION['user_info'])) {
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <h2>Pedidos por recibir</h2>
-            <table>
+            <table id="miTabla">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -58,8 +58,7 @@ if (isset($_SESSION['user_info'])) {
                     $stmt = ConexionBD::obtenerConexion()->prepare("SELECT * FROM `pedidos` WHERE ID_Cliente=:clienteId");
                     $stmt->bindValue(":clienteId", $id_cliente);
                     if ($stmt->execute()) {
-                        // Vinculación de parámetros
-                   
+                        $count = $stmt->rowCount();
                         if ($stmt->rowCount() > 0) {
                             while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 $id = $fila['ID_Pedido'];
@@ -98,8 +97,8 @@ if (isset($_SESSION['user_info'])) {
             </div>
             <div class="contenedor_info">
                 <h1 class="perfil-title"><?php echo $mensaje ?> !!!</h1>
-                <h2><?php echo $nombre?></h2>
-                
+                <h2><?php echo $nombre ?></h2>
+
                 <p><span> Cliente_ID:</span> <?php echo $id_cliente ?></p>
                 <p><span> Correo electrónico:</span> <?php echo $correo ?></p>
                 <p><span>Telefono:</span> <?php echo $telefono ?></p>
@@ -114,18 +113,63 @@ if (isset($_SESSION['user_info'])) {
             </div>
 
             <div class="card2">
-                <h2>Pedidos por Recibir <span>1</span></h2>
+                <h2>Pedidos por Recibir <span><?php echo  $count ?></span></h2>
                 <a class="a-links " onclick="openModal()">Ver detalles</a>
             </div>
 
             <div class="card3">
-                <h2>Pedidos Completados <span>1</span></h2>
+                <h2>Pedidos Completados <span></span></h2>
                 <a class="a-links " href="./carrito.php">Ver detalles</a>
             </div>
         </section>
     </main>
     <script src="../js/modal_pedidos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Inicializar DataTables
+        let table =  $('#miTabla').DataTable({
+                "paging": true, // Habilita la paginación
+                "ordering": true, // Permite ordenar las columnas
+                "info": true, // Muestra información del total de registros y páginas
+                "searching": true, // Habilita la búsqueda
+                "pageLength": 3, // Número de registros por página
+                "lengthChange": true, // Permite al usuario cambiar el número de registros por página
+                "language": { // Configuración para el idioma en español
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "search": "Buscar por ID:",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "emptyTable": "No hay datos disponibles en la tabla"
+                },
+                "responsive": true // Hace que la tabla sea responsiva
+            });
+
+            // Evento para manejar la entrada de búsqueda por ID
+            $('.dataTables_filter input').on('keyup change', function() {
+                // Filtrar la tabla por la columna de ID
+                table
+                    .columns(0) // Asegúrate de que esto corresponda al índice de la columna de ID
+                    .search(this.value)
+                    .draw();
+            });
+        });
+    </script>
+
     <?php require '../globals/footers.php'; ?>
+
+
 </body>
 
 </html>

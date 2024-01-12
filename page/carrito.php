@@ -73,7 +73,7 @@
                     <?php endif; ?>
                 </table>
                 <div class="merca-btn pagar">
-
+                        
                 </div>
             </div>
         </div>
@@ -92,7 +92,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../js/alerta.js"></script>
 <script src="../js/slaider_js.js"></script>
-<script src="../js/cargando.js"></script>
 <script src="../js/actualizarCarrito.js"></script>
 </body>
 

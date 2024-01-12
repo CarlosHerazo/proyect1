@@ -12,12 +12,13 @@
     <div class="container">
         <!-- Panel de Inicio de Sesión -->
         <div class="form-container sign-in-container">
-            <form action="#" id="login-form">
+            <form action="" id="login-form">
                 <h1>Iniciar Sesión</h1>
-                <input type="email" placeholder="Correo Electrónico" name="user" required/>
-                <input type="password" placeholder="Contraseña" name="contra" required/>
+                <input type="email" placeholder="Correo Electrónico" name="user" required />
+                <input type="password" placeholder="Contraseña" name="contra" required />
                 <a href="#">¿Olvidaste tu contraseña?</a>
                 <button name="btn-ingresar" type="submit"> Iniciar Sesión</button>
+                <button class="ghost ghosts" id="signUp" type="button">Registrarse</button>
             </form>
         </div>
 
@@ -25,12 +26,13 @@
         <div class="form-container sign-up-container" id="registro-form">
             <form action="">
                 <h1>Crear Cuenta</h1>
-                <input type="text" placeholder="Nombre" name="name" required/>
-                <input type="email" placeholder="Correo Electrónico" name="email" required/>
-                <input type="password" placeholder="Contraseña" name="pass" required/>
-                <input type="text" placeholder="Direccion" name="adress" required/>
-                <input type="number" placeholder="Telefono" name="phone" required/>
+                <input type="text" placeholder="Nombre" name="name" required />
+                <input type="email" placeholder="Correo Electrónico" name="email" required />
+                <input type="password" placeholder="Contraseña" name="pass" required />
+                <input type="text" placeholder="Direccion" name="adress" required />
+                <input type="number" placeholder="Telefono" name="phone" required />
                 <button name="btn-registrar" type="submit">Registrarse</button>
+                <button class="ghost ghosts" id="signIn">Iniciar Sesión</button>
             </form>
         </div>
 
@@ -52,18 +54,25 @@
     </div>
 
     <script>
-        const signUpButton = document.getElementById('signUp');
-        const signInButton = document.getElementById('signIn');
-        const container = document.querySelector('.container');
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            const signUpButtons = document.querySelectorAll('.ghost#signUp'); // Todos los botones para registrarse
+            const signInButtons = document.querySelectorAll('.ghost#signIn'); // Todos los botones para iniciar sesión
 
-        signUpButton.addEventListener('click', () => {
-            container.classList.add("right-panel-active");
-        });
+            signUpButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    container.classList.add("right-panel-active");
+                });
+            });
 
-        signInButton.addEventListener('click', () => {
-            container.classList.remove("right-panel-active");
+            signInButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    container.classList.remove("right-panel-active");
+                });
+            });
         });
     </script>
+
     <script src="../js/sign-up-sign-in.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>

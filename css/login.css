@@ -67,9 +67,24 @@ button:focus {
     outline: none;
 }
 
-button.ghost {
+.ghost {
     background-color: transparent;
     border-color: #FFFFFF;
+}
+
+.ghosts {
+    margin-top: 5px;
+    background-color: transparent;
+    border-color: #FF4B2B;
+    color: #FF4B2B;
+    display: none;
+}
+
+/* Media query para pantallas pequeñas (como celulares) */
+@media screen and (max-width: 768px) {
+    .ghosts {
+        display: block;
+    }
 }
 
 form {
@@ -250,3 +265,5 @@ input {
 .swal2-image-circular {
     border-radius: 50%;  /* Esto hace que la imagen sea circular */
 }
+
+

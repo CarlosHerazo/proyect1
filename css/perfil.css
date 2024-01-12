@@ -134,6 +134,7 @@ span{
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -148,19 +149,12 @@ span{
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    height: 400px;
+    width: 90%;
+    height: auto;
     border-radius: 10px;
-    overflow: scroll;
-}
-/* Estilos para la barra de desplazamiento en WebKit */
-.modal-content::-webkit-scrollbar {
-    width: 20px; 
+
 }
 
-.modal-content::-webkit-scrollbar-thumb {
-    background-color: #888; 
-}
 
 .close {
     color: #aaa;
@@ -176,25 +170,62 @@ span{
     cursor: pointer;
 }
 
-table {
+/* Estilos generales para la tabla */
+#miTabla {
+    font-family: Arial, sans-serif;
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-}
-
-td {
-    color: #333;
-}
-
-th {
+/* Encabezados de la tabla */
+#miTabla thead th {
     background-color: #FF6347;
-    color: #fff;
+    color: white;
+    padding: 10px;
+}
+
+/* Filas y celdas */
+#miTabla tbody td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Hover en las filas */
+#miTabla tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Estilos para la búsqueda y paginación */
+.dataTables_filter, .dataTables_paginate {
+    text-align: right;
+}
+
+.dataTables_filter input {
+    margin-left: 0.5em;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.paginate_button {
+    padding: 5px 10px;
+    background-color: #FF6347;
+    color: white !important;
+    border-radius: 5px;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.paginate_button:hover {
+    background-color: #45a049;
+}
+
+.paginate_button.current, .paginate_button.current:hover {
+    background-color: #333;
+}
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter {
+    margin: 20px 0;
 }
 
 table tr th:last-child {
@@ -217,3 +248,46 @@ table tr th:last-child {
 .fa-file-pdf:hover {
     cursor: pointer;
 }
+
+
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, 
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: white !important;
+    background-color: #FF6347 !important;
+    border-color: #FF6347 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #FF6347 !important;
+    color: white !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+    background-color: #eee !important;
+    border-color: #ddd !important;
+    cursor: default !important;
+}
+
+
+/* Estilo para el campo de texto */
+.dataTables_filter input {
+    border: 2px solid #ccc !important; /* Borde del campo de texto */
+    border-radius: 4px !important; /* Bordes redondeados para el campo de texto */
+    box-sizing: border-box !important; /* Asegura que el padding no aumente el ancho */
+}
+
+/* Estilo para el campo de texto al enfocarse (opcional) */
+/* Estilo para el campo de texto al enfocarse (opcional) */
+.dataTables_filter input:focus {
+    border-color: #FF6347 !important; /* Cambia el color del borde al enfocar */
+    border-width: 2px !important; /* Hace el borde más grueso */
+    outline: none !important; /* Elimina el outline predeterminado */
+    box-shadow: 0 0 8px 0 rgba(255, 99, 71, 0.6) !important; /* Añade un efecto de iluminación */
+}
+
+
+
+
+

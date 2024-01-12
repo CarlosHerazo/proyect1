@@ -19,15 +19,16 @@ $preference->binary_mode = true;
 
 // creamos un array para los productos
 $productos = [];
-if (!empty($_SESSION['carrito'])) {
-    foreach ($_SESSION['carrito'] as $indice => $producto) {
-        $item = new MercadoPago\Item();
-        $item->title = $producto['nombre'];
-        $item->quantity = $producto['cantidad'];
-        $item->unit_price = $producto['precio'];
-        array_push($productos, $item);
+    if (!empty($_SESSION['carrito'])) {
+        foreach ($_SESSION['carrito'] as $indice => $producto) {
+            $item = new MercadoPago\Item();
+            $item->title = $producto['nombre'];
+            $item->quantity = $producto['cantidad'];
+            $item->unit_price = $producto['precio'];
+            array_push($productos, $item);
+        }
     }
-}
+
 
 $preference->items = $productos;
 $preference->save();

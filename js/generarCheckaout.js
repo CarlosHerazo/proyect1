@@ -27,10 +27,10 @@ function inicializarCheckout(preferenceId) {
             },
         });
     } else {
-        console.error('El preferenceId no tiene un valor válido. No se puede inicializar el checkout.');
-        // Puedes agregar un manejo adicional, como mostrar un mensaje de error al usuario.
+        
     }
 }
+
 
 // Llamar a la función para obtener la preferencia al cargar la página
 window.onload = obtenerPreferencia();
