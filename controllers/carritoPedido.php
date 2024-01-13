@@ -30,9 +30,21 @@ if($stmtPedido){
         ':estado' => "En preparación",
         ':total' => $totalCompra
     ])) {
-        // Obtener el último ID insertado
-        $ultimoIdPedido = $conexion->lastInsertId();
-        echo "Pedido insertado con éxito. ID del pedido: " . $ultimoIdPedido;
+        $idPedido = $conexion->lastInsertId();
+        $sqlPedidoDetalle = "INSERT INTO `detalle_pedidos`(`ID_Pedido`, `ID_Producto`, `nombre`, `cantidad`, `precio`) VALUES (:pedidoId,:productoId,:nombre,:cantidad,:precio)";
+        foreach ($_SESSION['carrito'] as $producto) {
+            $stmtPedidoDetalle = $conexion->prepare($sqlPedidoDetalle);
+            if (!$stmtPedidoDetalle->execute([
+                ':pedidoId' => $idPedido,
+                ':productoId' => $producto['id'],
+                ':nombre' => $producto['nombre'],
+                ':cantidad' => $producto['cantidad'],
+                ':precio' => $producto['precio']
+            ])) {
+                echo "Error al insertar detalles del pedido.";
+                exit();
+            }
+        }
     } else {
         echo "Error al insertar datos en la base de datos.";
         exit();
@@ -43,4 +55,4 @@ if($stmtPedido){
 }
 
 
-// header("Location: ../page/confirmacion.php");
+header("Location: ../page/confirmacion.php");

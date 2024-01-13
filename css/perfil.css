@@ -276,7 +276,6 @@ table tr th:last-child {
 }
 
 /* Estilo para el campo de texto al enfocarse (opcional) */
-/* Estilo para el campo de texto al enfocarse (opcional) */
 .dataTables_filter input:focus {
     border-color: #FF6347 !important; /* Cambia el color del borde al enfocar */
     border-width: 2px !important; /* Hace el borde más grueso */

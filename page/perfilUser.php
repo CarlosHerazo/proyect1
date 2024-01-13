@@ -76,8 +76,6 @@ if (isset($_SESSION['user_info'])) {
                                 </tr>
                     <?php
                             }
-                        } else {
-                            echo "<tr><td colspan='5'>No se encontraron resultados.</td></tr>";
                         }
                     } else {
                         echo "<tr><td colspan='5'>Error al ejecutar la consulta: " . print_r($stmt->errorInfo(), true) . "</td></tr>";
@@ -87,7 +85,6 @@ if (isset($_SESSION['user_info'])) {
             </table>
         </div>
     </div>
-
 
     <br><br><br>
     <main class="main">
@@ -118,8 +115,8 @@ if (isset($_SESSION['user_info'])) {
             </div>
 
             <div class="card3">
-                <h2>Pedidos Completados <span></span></h2>
-                <a class="a-links " href="./carrito.php">Ver detalles</a>
+                <h2>Pedidos Completados <span>1</span></h2>
+                <a class="a-links " onclick="openModal2()">Ver detalles</a>
             </div>
         </section>
     </main>
@@ -129,7 +126,7 @@ if (isset($_SESSION['user_info'])) {
     <script>
         $(document).ready(function() {
             // Inicializar DataTables
-        let table =  $('#miTabla').DataTable({
+            let table = $('#miTabla').DataTable({
                 "paging": true, // Habilita la paginación
                 "ordering": true, // Permite ordenar las columnas
                 "info": true, // Muestra información del total de registros y páginas
