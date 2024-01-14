@@ -244,7 +244,7 @@ $result = $conn->query($query);
                                     </div>
                                     <div class="btn-Botones">
                                         <button class="btn agregar-product" data-clicked="0" id="agregar-product" data-id ="<?php echo ($row['ID_Producto'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
-                                        <button class="btn">Ver detalles</button>
+                                        <button class="btn" data-id ="<?php echo ($row['ID_Producto'])?>" onclick="verDetalles(this)">Ver detalles</button>
                                     </div>
                                 </div>
                             </div>

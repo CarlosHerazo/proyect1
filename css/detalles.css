@@ -1,0 +1,137 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+    background-color: #f5f5f5;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+
+}
+
+.images {
+    position: relative;
+}
+
+.images img {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    border-top-right-radius: 50%;
+    /* Nuevo estilo para trasladar la imagen a la derecha */
+    transform: translate(70px, 0);
+    /* Ajusta los 20px según sea necesario */
+}
+
+.images img:hover {
+    transform: scale(1.05);
+}
+
+.product {
+    /* Tus estilos actuales */
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: 20px; /* Puede que necesites ajustar este margen */
+    max-width: 700px;
+    background-color: #fff;
+    padding-left: 100px; /* Ajusta según sea necesario para el nuevo posicionamiento */
+}
+
+.category,
+.title,
+.price,
+.desc {
+    margin-bottom: 10px;
+}
+.title{
+    text-decoration: underline;
+}
+
+.buttons .add {
+    background-color: #FF6347;
+    /* Color principal del botón */
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buttons .add:hover {
+    background-color: #e4462a;
+    /* Color del botón al pasar el mouse */
+}
+
+/* Animación de carga de imagen */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.images img {
+    animation: fadeIn 1s;
+}
+
+
+/*Botones de aumentar*/
+.quantity {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+
+    padding: 3px;
+}
+
+.quantity-minus,
+.quantity-plus {
+    margin: 20px;
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.quantity-minus:hover,
+.quantity-plus:hover {
+    background-color: #e4462a;
+}
+
+#quantity-value {
+    min-width: 20px;
+    text-align: center;
+}
+
+.div-butoms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart-icon {
+    border-radius: 50%;
+}
+
+.heart-icon.active {
+    color: #f4f4f4;
+    /* Color para el corazón relleno */
+}
