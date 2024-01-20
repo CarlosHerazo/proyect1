@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -21,12 +22,6 @@
 </head>
 
 <body>
-    <!-- <header class="header-content primary">
-        <div class="header-contact">
-            <p> CELL: +57 3135885420</p>
-            <p> Carrera #48 Cra 59-25</p>
-        </div>
-    </header> -->
     <!--comienzo del header-->
     <header class="header-content ">
         <div class="content-logo">

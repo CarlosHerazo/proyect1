@@ -9,7 +9,7 @@ require '../controllers/ajaxCarrito.php';
         <div class="nav-var">
             <nav>
                 <ul>
-                    <a href="../index.html">
+                    <a href="../index.php">
                         <li>Inicio</li>
                     </a>
                     <a href="../page/productos.php">
