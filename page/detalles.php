@@ -26,16 +26,18 @@
     <br><br><br><br><br>
     <main>
         <div class="container">
-            <div class="images">
-                <img src="../img/combo-familiar-1.png">
+            <div class="images" id="img">
+                <img src="../img/combo-familiar-1.png" alt="">
             </div>
             <div class="product">
-               
-                <samp><h1 class="title">Título</h1><p class="category">Pizza</p></samp>
-                <h2 class="price">$150</h2>
-                <p class="desc">
-                <h2>Ingredientes de Primera Calidad</h2>                  
-                        <strong>Base:</strong> Nuestra masa artesanal, delgada y crujiente, hecha diariamente con harina de la mejor calidad, agua, levadura y una pizca de sal, es la base perfecta para los ricos ingredientes que se suman.              
+
+                <samp>
+                    <h1 class="title" id="title"></h1>
+                    <p class="category" id="category"></p>
+                </samp>
+                <h2 class="price" id="price"></h2>
+                <p class="desc" id="desc">
+
                 </p>
                 <div class="div-butoms">
                     <div class="quantity">
@@ -63,6 +65,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="../js/swiper.js"></script>
     <script src="../js/slaider_js.js"></script>
+    <script src="../js/detalles.js"></script>
 </body>
 
 </html>

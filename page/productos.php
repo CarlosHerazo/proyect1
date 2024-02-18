@@ -97,7 +97,7 @@ $result = $conn->query($query);
             ?>
                 <div class="swiper-wrapper">
                     <?php
-                    if ($result-> rowCount() > 0) {
+                    if ($result->rowCount() > 0) {
                         // Iterar sobre los resultados de la consulta
                         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                     ?>
@@ -108,7 +108,7 @@ $result = $conn->query($query);
                                     </div>
                                     <div class="body-slaider">
                                         <h2><?php echo $row['nombre']; ?></h2>
-                                        <p class="Precio">$<?php echo number_format( $row['precio'],2); ?></p>
+                                        <p class="Precio">$<?php echo number_format($row['precio'], 2); ?></p>
                                         <p class="Valoracion">Valoración: <?php echo round($row['promedio_valoracion'], 2); ?></p>
                                         <div class="testimonial-stars">
                                             <i class="fas fa-star"></i> <!-- Estrella activa -->
@@ -118,8 +118,8 @@ $result = $conn->query($query);
                                             <i class="fas fa-star"></i>
                                         </div>
                                         <div class="btn-Botones">
-                                            <button class="btn" id="agregar-product" data-id ="<?php echo ($row['ID_Producto'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
-                                            <button class="btn">Ver detalles</button>
+                                            <button class="btn" id="agregar-product" data-id="<?php echo ($row['ID_Producto']) ?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
+                                            <button class="btn" data-id-detalles="<?php echo ($row['ID_Producto']) ?> " onclick="verDetalles(this)">Ver detalles</button>
                                         </div>
                                     </div>
                                 </div>
@@ -133,8 +133,8 @@ $result = $conn->query($query);
                 </div>
                 <div class="swiper-pagination"></div>
         </div>
-    <?php    
-             
+    <?php
+
             } else {
                 echo "Error en la consulta: ";
             }
@@ -160,7 +160,7 @@ $result = $conn->query($query);
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <?php
-                if ($result-> rowCount() > 0) {
+                if ($result->rowCount() > 0) {
                     // Iterar sobre los resultados de la consulta
                     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 ?>
@@ -171,7 +171,7 @@ $result = $conn->query($query);
                                 </div>
                                 <div class="body-slaider">
                                     <h2><?php echo $row['nombre']; ?></h2>
-                                    <p class="Precio">$<?php echo  number_format( $row['precio'],2); ?></p>
+                                    <p class="Precio">$<?php echo  number_format($row['precio'], 2); ?></p>
                                     <p class="Valoracion">Valoración: <?php echo round($row['promedio_valoracion'], 2); ?></p>
                                     <div class="testimonial-stars">
                                         <i class="fas fa-star"></i> <!-- Estrella activa -->
@@ -181,8 +181,8 @@ $result = $conn->query($query);
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="btn-Botones">
-                                        <button class="btn agregar-product"  data-clicked="0" id="agregar-product" data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
-                                        <button class="btn">Ver detalles</button>
+                                        <button class="btn agregar-product" data-clicked="0" id="agregar-product" data-id="<?php echo ($row['ID_Producto']) ?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
+                                        <button class="btn" data-id-detalles="<?php echo ($row['ID_Producto']) ?> " onclick="verDetalles(this)">Ver detalles</button>
                                     </div>
                                 </div>
                             </div>
@@ -192,7 +192,7 @@ $result = $conn->query($query);
                 } else {
                     echo "<p class='alert-product'>No hay productos destacados disponibles.</p>";
                 }
-               
+
                 ?>
             </div>
         </div>
@@ -233,7 +233,7 @@ $result = $conn->query($query);
                                 </div>
                                 <div class="body-slaider">
                                     <h2><?php echo $row['nombre']; ?></h2>
-                                    <p class="Precio">$<?php echo number_format( $row['precio'], 2); ?></p>
+                                    <p class="Precio">$<?php echo number_format($row['precio'], 2); ?></p>
                                     <p class="Valoracion">Valoración: <?php echo round($row['promedio_valoracion'], 2); ?></p>
                                     <div class="testimonial-stars">
                                         <i class="fas fa-star"></i> <!-- Estrella activa -->
@@ -243,8 +243,8 @@ $result = $conn->query($query);
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="btn-Botones">
-                                        <button class="btn agregar-product" data-clicked="0" id="agregar-product" data-id ="<?php echo ($row['ID_Producto'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
-                                        <button class="btn" data-id ="<?php echo ($row['ID_Producto'])?>" onclick="verDetalles(this)">Ver detalles</button>
+                                        <button class="btn agregar-product" data-clicked="0" id="agregar-product" data-id="<?php echo ($row['ID_Producto']) ?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
+                                        <button class="btn" data-id-detalles="<?php echo ($row['ID_Producto']) ?> " onclick="verDetalles(this)">Ver detalles</button>
                                     </div>
                                 </div>
                             </div>
@@ -286,7 +286,7 @@ $result = $conn->query($query);
                                 </div>
                                 <div class="body-slaider">
                                     <h2><?php echo $row['nombre']; ?></h2>
-                                    <p class="Precio">$<?php echo  number_format( $row['precio'], 2); ?></p>
+                                    <p class="Precio">$<?php echo  number_format($row['precio'], 2); ?></p>
                                     <p class="Valoracion">Valoración: <?php echo round($row['promedio_valoracion'], 2); ?></p>
                                     <div class="testimonial-stars">
                                         <i class="fas fa-star"></i> <!-- Estrella activa -->
@@ -296,8 +296,8 @@ $result = $conn->query($query);
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <div class="btn-Botones">
-                                        <button class="btn agregar-product" data-clicked="0" id="agregar-product"  data-id ="<?php echo ($row['id'])?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
-                                        <button class="btn">Ver detalles</button>
+                                        <button class="btn agregar-product" data-clicked="0" id="agregar-product" data-id="<?php echo ($row['ID_Producto']) ?>" data-nombre="<?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?>" data-precio="<?php echo $row['precio']; ?>" onclick="agregarAlCarrito(this)">Agregar</button>
+                                        <button class="btn" data-id-detalles="<?php echo ($row['ID_Producto']) ?> " onclick="verDetalles(this)">Ver detalles</button>
                                     </div>
                                 </div>
                             </div>
@@ -318,7 +318,7 @@ $result = $conn->query($query);
     }
     ?>
     <br>
-<?php require '../globals/footers.php'; ?>
+    <?php require '../globals/footers.php'; ?>
 </body>
 
 </html>
@@ -330,6 +330,7 @@ $result = $conn->query($query);
 <script src="../js/slaider_js.js"></script>
 <!-- <script src="../js/cargando.js"></script> -->
 <script src="../js/agregarCarrito.js"></script>
+<script src="../js/inter-detalles.js"></script>
 </body>
 
 </html>
