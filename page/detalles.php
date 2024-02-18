@@ -35,7 +35,8 @@
                     <h1 class="title" id="title"></h1>
                     <p class="category" id="category"></p>
                 </samp>
-                <h2 class="price" id="price"></h2>
+                <h2>Precio:</h2>
+                <h3 class="price" id="price"></h3>
                 <p class="desc" id="desc">
 
                 </p>
