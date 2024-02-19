@@ -73,7 +73,38 @@
                     <?php endif; ?>
                 </table>
                 <div class="merca-btn pagar">
-                        
+
+                </div>
+                <div id="merx">
+                    <?php
+                    $llaveSecreta = "4Vj8eK4rloUd272L48hsrarnUA";
+                    $merchantId = "508029";
+                    $referenceCode = "PIZZA" . substr(md5(uniqid()), 0, 10);
+                    $signature = hash('md5', "$llaveSecreta~$merchantId~$referenceCode~$total~COP");
+
+                    ?>
+
+                    <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+                        <input name="merchantId" type="hidden" value="<?php echo $merchantId; ?>">
+                        <input name="accountId" type="hidden" value="512321">
+                        <input name="description" type="hidden" value="Test PAYU">
+                        <input name="referenceCode" type="hidden" value="<?php echo $referenceCode; ?>">
+                        <input name="amount" type="hidden" value="<?php echo $total; ?>">
+                        <input name="tax" type="hidden" value="0">
+                        <input name="taxReturnBase" type="hidden" value="0">
+                        <input name="currency" type="hidden" value="COP">
+                        <input name="signature" type="hidden" value="<?php echo $signature; ?>">
+                        <input name="test" type="hidden" value="0">
+                        <input name="buyerEmail" type="hidden" value="<?php echo $_SESSION['user_info']['correo']; ?>">
+                        <input name="responseUrl" type="hidden" value="http://localhost/proyect1/page/confirmacion.php">
+                        <input name="confirmationUrl" type="hidden" value="http://localhost/proyect1/page/carrito.php">
+                        <input name="shippingAddress" type="hidden" value="<?php echo $_SESSION['user_info']['direccion']; ?>">
+                        <input name="shippingCity" type="hidden" value="Cartagena">
+                        <input name="shippingCountry" type="hidden" value="CO">
+                        <input name="Submit" type="submit" value="Pagar con Payu">
+                    </form>
+
+
                 </div>
             </div>
         </div>
@@ -94,5 +125,19 @@
 <script src="../js/slaider_js.js"></script>
 <script src="../js/actualizarCarrito.js"></script>
 </body>
+<script>
+    var payuForm = document.getElementById('payuForm');
+
+    // Modificar los valores de los campos según tus necesidades
+    payuForm.querySelector('[name="merchantId"]').value = 'tu_merchant_id';
+    payuForm.querySelector('[name="accountId"]').value = 'tu_account_id';
+    // ... otros campos ...
+
+    // Agregar un evento para enviar el formulario cuando sea necesario
+    function enviarFormularioPayu() {
+        // Aquí puedes agregar lógica adicional si es necesario
+        payuForm.submit();
+    }
+</script>
 
 </html>

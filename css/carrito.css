@@ -144,3 +144,20 @@ table td i.fas.fa-trash:hover {
     cursor: not-allowed;
     /* Cambia el cursor para indicar que el botón está deshabilitado */
 }
+
+
+input[name="Submit"] {
+    background-color: #FF6347;
+    color: white;
+    padding: 5px 40px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+/* Estilo al pasar el ratón sobre el botón */
+input[name="Submit"]:hover {
+    background-color: #C0392B;
+}

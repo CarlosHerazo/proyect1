@@ -8,7 +8,7 @@ function obtenerPreferencia() {
     fetch('../controllers/checkoutController.php')
         .then(response => response.json())
         .then(data => {
-            console.log(data); 
+            console.log(data);
             inicializarCheckout(data.preference_id);
         })
         .catch(error => console.error('Error al obtener la preferencia:', error));
@@ -23,11 +23,11 @@ function inicializarCheckout(preferenceId) {
             },
             render: {
                 container: '.merca-btn',
-                label: 'Proceder a pagar',
+                label: 'Pagar con MercadoPago',
             },
         });
     } else {
-        
+
     }
 }
 
